@@ -1,6 +1,6 @@
 ﻿<# This form was created using POSHGUI.com  a free online gui designer for PowerShell
 .NAME
-    Lynx-Wrapper 2.0
+    Lynx-Wrapper
 .SYNOPSIS
     Hlper Application for Lynx
 .DESCRIPTION
@@ -8,6 +8,7 @@
 #>
 
 Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
 [System.Windows.Forms.Application]::EnableVisualStyles()
 
 $LynxWrapper                  = New-Object system.Windows.Forms.Form
