@@ -56,19 +56,19 @@ $CheckHeight            = $CheckLabelHeight * 1.2
 
 #Set Object Positions and sizes
 $DefaultFontWidth       = $Margin + $CheckWidth + $Margin + $CheckWidth + $Margin
-$DefaultFontHeight      = 600
+$DefaultFontHeight      = 500
 
 
-$LynxWrapper                  = New-Object system.Windows.Forms.Form
-$LynxWrapper.ClientSize       = "$DefaultFontWidth,$DefaultFontHeight"
+$LynxWrapper                  = New-Object System.Windows.Forms.Form
+$LynxWrapper.ClientSize       = New-Object System.Drawing.Size($DefaultFontWidth,$DefaultFontHeight)
 $LynxWrapper.text             = $LabelForm
 $LynxWrapper.BackColor        = "#c8c8c8"
 $LynxWrapper.TopMost          = $false
 
-$TTOptions                       = New-Object system.Windows.Forms.ToolTip
+$TTOptions                       = New-Object System.Windows.Forms.ToolTip
 $TTOptions.ToolTipTitle          = $LabelTTOptions
 
-$Options                         = New-Object system.Windows.Forms.Button
+$Options                         = New-Object System.Windows.Forms.Button
 $Options.BackColor               = "#ffffff"
 $Options.text                    = $LabelOptions
 $Options.width                   = $ButtonWidth
@@ -76,10 +76,10 @@ $Options.height                  = $ButtonHeight
 $Options.location                = New-Object System.Drawing.Point($Margin,$Margin)
 $Options.Font                    = 'Microsoft Sans Serif,12,style=Bold'
 
-$TTRefresh                       = New-Object system.Windows.Forms.ToolTip
+$TTRefresh                       = New-Object System.Windows.Forms.ToolTip
 $TTRefresh.ToolTipTitle          = $LabelRefresh
 
-$Refresh                         = New-Object system.Windows.Forms.Button
+$Refresh                         = New-Object System.Windows.Forms.Button
 $Refresh.BackColor               = "#ffffff"
 $Refresh.text                    = $LabelTTRefresh
 $Refresh.width                   = $ButtonWidth
@@ -87,7 +87,7 @@ $Refresh.height                  = $ButtonHeight
 $Refresh.location                = New-Object System.Drawing.Point(($DefaultFontWidth - ($ButtonWidth + $Margin)),$Margin)
 $Refresh.Font                    = 'Microsoft Sans Serif,12,style=Bold'
 
-$RaceList                        = New-Object system.Windows.Forms.ListView
+$RaceList                        = New-Object System.Windows.Forms.ListView
 $RaceList.text                   = "listView"
 $RaceList.width                  = $DefaultFontWidth - (2 * $Margin)
 $RaceList.height                 = $DefaultFontHeight - ($ButtonHeight + 2 * $CheckHeight + 5 * $Margin)
@@ -95,10 +95,10 @@ $RaceList.visible                = $true
 $RaceList.enabled                = $true
 $RaceList.location               = New-Object System.Drawing.Point($Margin,($ButtonHeight + 2 * $Margin))
 
-$TTNewRaceSingle                 = New-Object system.Windows.Forms.ToolTip
+$TTNewRaceSingle                 = New-Object System.Windows.Forms.ToolTip
 $TTNewRaceSingle.ToolTipTitle    = $LabelTTCheckSingleRace
 
-$ShowNewRaceSingle               = New-Object system.Windows.Forms.CheckBox
+$ShowNewRaceSingle               = New-Object System.Windows.Forms.CheckBox
 $ShowNewRaceSingle.text          = $LabelCheckSingleRace
 $ShowNewRaceSingle.AutoSize      = $false
 $ShowNewRaceSingle.BackColor     = "#ffff4d"
@@ -107,10 +107,10 @@ $ShowNewRaceSingle.height        = $CheckHeight
 $ShowNewRaceSingle.location      = New-Object System.Drawing.Point($Margin,($DefaultFontHeight - 2 * ($Margin + $CheckHeight)))
 $ShowNewRaceSingle.Font          = 'Microsoft Sans Serif,10'
 
-$TTNewRaceMulti                  = New-Object system.Windows.Forms.ToolTip
+$TTNewRaceMulti                  = New-Object System.Windows.Forms.ToolTip
 $TTNewRaceMulti.ToolTipTitle     = $LabelTTCheckMultiRace
 
-$ShowNewRaceMulti                = New-Object system.Windows.Forms.CheckBox
+$ShowNewRaceMulti                = New-Object System.Windows.Forms.CheckBox
 $ShowNewRaceMulti.text           = $LabelCheckMultiRace
 $ShowNewRaceMulti.AutoSize       = $false
 $ShowNewRaceMulti.BackColor      = "#38ea2e"
@@ -119,10 +119,10 @@ $ShowNewRaceMulti.height         = $CheckHeight
 $ShowNewRaceMulti.location       = New-Object System.Drawing.Point((2 * $Margin + $CheckWidth),($DefaultFontHeight - 2 * ($Margin + $CheckHeight)))
 $ShowNewRaceMulti.Font           = 'Microsoft Sans Serif,10'
 
-$TTNotJudgedRace                 = New-Object system.Windows.Forms.ToolTip
+$TTNotJudgedRace                 = New-Object System.Windows.Forms.ToolTip
 $TTNotJudgedRace.ToolTipTitle    = $LabelCheckNotJudged
 
-$ShowNotJudgedRace               = New-Object system.Windows.Forms.CheckBox
+$ShowNotJudgedRace               = New-Object System.Windows.Forms.CheckBox
 $ShowNotJudgedRace.text          = $LabelCheckNotJudged
 $ShowNotJudgedRace.AutoSize      = $false
 $ShowNotJudgedRace.BackColor     = "#66a3ff"
@@ -131,10 +131,10 @@ $ShowNotJudgedRace.height        = $CheckHeight
 $ShowNotJudgedRace.location      = New-Object System.Drawing.Point($Margin,($DefaultFontHeight - ($Margin + $CheckHeight)))
 $ShowNotJudgedRace.Font          = 'Microsoft Sans Serif,10'
 
-$TTJudgedRace                    = New-Object system.Windows.Forms.ToolTip
+$TTJudgedRace                    = New-Object System.Windows.Forms.ToolTip
 $TTJudgedRace.ToolTipTitle       = $LabelCheckJudged
 
-$ShowJudgedRace                  = New-Object system.Windows.Forms.CheckBox
+$ShowJudgedRace                  = New-Object System.Windows.Forms.CheckBox
 $ShowJudgedRace.text             = $LabelCheckJudged
 $ShowJudgedRace.AutoSize         = $false
 $ShowJudgedRace.BackColor        = "#ff80ff"
