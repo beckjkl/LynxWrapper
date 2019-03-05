@@ -66,7 +66,7 @@ $LynxWrapper.BackColor        = "#c8c8c8"
 $LynxWrapper.TopMost          = $false
 
 $TTOptions                       = New-Object system.Windows.Forms.ToolTip
-$TTOptions.ToolTipTitle          = $LabeTTlOptions
+$TTOptions.ToolTipTitle          = $LabelTTOptions
 
 $Options                         = New-Object system.Windows.Forms.Button
 $Options.BackColor               = "#ffffff"

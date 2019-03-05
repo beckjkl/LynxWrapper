@@ -138,6 +138,7 @@ $RaceList.Items.Add($Race1)
 $RaceList.Items.Add($Race2)
 
 $RaceList.Add_Click({Write-Host $RaceList.SelectedIndices})
+$LynxWrapper.Add_Resize({Write-Host $LynxWrapper.Width $LynxWrapper.Height})
 
 
 [void]$LynxWrapper.ShowDialog()
