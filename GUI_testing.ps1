@@ -44,6 +44,7 @@ $RaceList.text                   = "listView"
 $RaceList.width                  = 460
 $RaceList.height                 = 400
 $RaceList.location               = New-Object System.Drawing.Point(20,65)
+$RaceList.Items
 
 $TTNewRaceSingle                 = New-Object system.Windows.Forms.ToolTip
 $TTNewRaceSingle.ToolTipTitle    = "Neue Läufe (Single User)"
@@ -132,13 +133,49 @@ $Race1.SubItems.Add('14:05')
 $Race2 = New-Object System.Windows.Forms.ListViewItem('Rennen mit Übermäßig langem Namen .............')
 $Race2.SubItems.Add('Nicht ausgewerteter Lauf')
 $Race2.SubItems.Add('13:20')
+$Race2.Subitems[1].BackColor="#38ea2e"
 
 
 $RaceList.Items.Add($Race1)
 $RaceList.Items.Add($Race2)
 
+$RaceList.Items[0].UseItemStyleForSubItems = $false
+$RaceList.Items[0].SubItems[1].BackColor="#38ea2e"
+$RaceList.Items[1].UseItemStyleForSubItems = $false
+
+
+
 $RaceList.Add_Click({Write-Host $RaceList.SelectedIndices})
 $LynxWrapper.Add_Resize({Write-Host $LynxWrapper.Width $LynxWrapper.Height})
 
+
+$Folder = Get-ChildItem Z:\
+$EventFiles=$Folder | Where-Object Name -like "*.evn"
+$FinishFiles=$Folder | Where-Object Name -like "*.i01"
+
+Write-Host $Folder
+Write-Host $EventFiles
+Write-Host $FinishFiles
+
+foreach ($File in $EventFiles){
+
+    $SearchFile=($File.Name.split("."))[0]+".i01"
+    
+    #Write-Host "Checking" $Searchfile
+    
+    $InsertRace = New-Object System.Windows.Forms.ListViewItem(($File.Name.Split("."))[0])
+
+    if($FinishFiles.Name.Contains($SearchFile)){
+        $InsertRace.SubItems.Add('Nicht ausgewerteter Lauf')
+        $InsertRace.SubItems[1].BackColor="#66a3ff"
+
+    } else {
+        $InsertRace.SubItems.Add('Neuer Lauf (Single User)')
+        $InsertRace.SubItems[1].BackColor="#ffff4d"
+    }
+    $InsertRace.SubItems.Add($File.LastWriteTime.ToString())
+    $RaceList.Items.Add($InsertRace)
+}
+foreach ($Item in $RaceList.Items){$Item.UseItemStyleForSubItems = $false}
 
 [void]$LynxWrapper.ShowDialog()
