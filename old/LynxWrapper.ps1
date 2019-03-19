@@ -36,31 +36,34 @@ $TextTTCheckJudged      = "Zeige ausgewertete Läufe"
 $ButtonLabels           = $LabelOptions,$LabelRefresh
 $CheckLabels            = $LabelCheckSingleRace,$LabelCheckMultiRace,$LabelCheckNotJudged,$LabelCheckJudged
 
+
+#Magic Numbers
 $Margin                 = 20
+$Scaler                 = 1.2
+$CheckBoxMargin         = 10
+$DefaultFormHeight      = 500
 
 #Calculate Label sizes and window size
 $font                   = New-Object System.Drawing.Font('Microsoft Sans Serif', 12, [System.Drawing.FontStyle]'Bold')
 $ButtonLabelWidth       =  ($ButtonLabels | ForEach-Object -Process {[System.Windows.Forms.TextRenderer]::MeasureText($_, $font)} | Measure-Object Width -Maximum).Maximum
 $ButtonLabelHeight      = ([System.Windows.Forms.TextRenderer]::MeasureText($ButtonLabels[0], $font)).Height
 
-$ButtonWidth            = $ButtonLabelWidth * 1.2
-$ButtonHeight           = $ButtonLabelHeight * 1.2
+$ButtonWidth            = $ButtonLabelWidth * $Scaler
+$ButtonHeight           = $ButtonLabelHeight * $Scaler
 
 $font                   = New-Object System.Drawing.Font('Microsoft Sans Serif', 10)
 $CheckLabelWidth        = ($CheckLabels | ForEach-Object -Process {[System.Windows.Forms.TextRenderer]::MeasureText($_, $font)} | Measure-Object Width -Maximum).Maximum
 $CheckLabelHeight       = ( [System.Windows.Forms.TextRenderer]::MeasureText($CheckLabels[0], $font)).Height
 
-$CheckBoxMargin         = 10
-$CheckWidth             = ($CheckLabelWidth + $CheckBoxMargin) * 1.2
-$CheckHeight            = $CheckLabelHeight * 1.2
+$CheckWidth             = ($CheckLabelWidth + $CheckBoxMargin) * $Scaler
+$CheckHeight            = $CheckLabelHeight * $Scaler
 
 #Set Object Positions and sizes
-$DefaultFontWidth       = $Margin + $CheckWidth + $Margin + $CheckWidth + $Margin
-$DefaultFontHeight      = 500
+$DefaultFormWidth       = $Margin + $CheckWidth + $Margin + $CheckWidth + $Margin
 
 
 $LynxWrapper                  = New-Object System.Windows.Forms.Form
-$LynxWrapper.ClientSize       = New-Object System.Drawing.Size($DefaultFontWidth,$DefaultFontHeight)
+$LynxWrapper.ClientSize       = New-Object System.Drawing.Size($DefaultFormWidth,$DefaultFormHeight)
 $LynxWrapper.text             = $LabelForm
 $LynxWrapper.BackColor        = "#c8c8c8"
 $LynxWrapper.TopMost          = $false
@@ -84,13 +87,13 @@ $Refresh.BackColor               = "#ffffff"
 $Refresh.text                    = $LabelTTRefresh
 $Refresh.width                   = $ButtonWidth
 $Refresh.height                  = $ButtonHeight
-$Refresh.location                = New-Object System.Drawing.Point(($DefaultFontWidth - ($ButtonWidth + $Margin)),$Margin)
+$Refresh.location                = New-Object System.Drawing.Point(($DefaultFormWidth - ($ButtonWidth + $Margin)),$Margin)
 $Refresh.Font                    = 'Microsoft Sans Serif,12,style=Bold'
 
 $RaceList                        = New-Object System.Windows.Forms.ListView
 $RaceList.text                   = "listView"
-$RaceList.width                  = $DefaultFontWidth - (2 * $Margin)
-$RaceList.height                 = $DefaultFontHeight - ($ButtonHeight + 2 * $CheckHeight + 5 * $Margin)
+$RaceList.width                  = $DefaultFormWidth - (2 * $Margin)
+$RaceList.height                 = $DefaultFormHeight - ($ButtonHeight + 2 * $CheckHeight + 5 * $Margin)
 $RaceList.visible                = $true
 $RaceList.enabled                = $true
 $RaceList.location               = New-Object System.Drawing.Point($Margin,($ButtonHeight + 2 * $Margin))
@@ -104,7 +107,7 @@ $ShowNewRaceSingle.AutoSize      = $false
 $ShowNewRaceSingle.BackColor     = "#ffff4d"
 $ShowNewRaceSingle.width         = $CheckWidth
 $ShowNewRaceSingle.height        = $CheckHeight
-$ShowNewRaceSingle.location      = New-Object System.Drawing.Point($Margin,($DefaultFontHeight - 2 * ($Margin + $CheckHeight)))
+$ShowNewRaceSingle.location      = New-Object System.Drawing.Point($Margin,($DefaultFormHeight - 2 * ($Margin + $CheckHeight)))
 $ShowNewRaceSingle.Font          = 'Microsoft Sans Serif,10'
 
 $TTNewRaceMulti                  = New-Object System.Windows.Forms.ToolTip
@@ -116,7 +119,7 @@ $ShowNewRaceMulti.AutoSize       = $false
 $ShowNewRaceMulti.BackColor      = "#38ea2e"
 $ShowNewRaceMulti.width          = $CheckWidth
 $ShowNewRaceMulti.height         = $CheckHeight
-$ShowNewRaceMulti.location       = New-Object System.Drawing.Point((2 * $Margin + $CheckWidth),($DefaultFontHeight - 2 * ($Margin + $CheckHeight)))
+$ShowNewRaceMulti.location       = New-Object System.Drawing.Point((2 * $Margin + $CheckWidth),($DefaultFormHeight - 2 * ($Margin + $CheckHeight)))
 $ShowNewRaceMulti.Font           = 'Microsoft Sans Serif,10'
 
 $TTNotJudgedRace                 = New-Object System.Windows.Forms.ToolTip
@@ -128,7 +131,7 @@ $ShowNotJudgedRace.AutoSize      = $false
 $ShowNotJudgedRace.BackColor     = "#66a3ff"
 $ShowNotJudgedRace.width         = $CheckWidth
 $ShowNotJudgedRace.height        = $CheckHeight
-$ShowNotJudgedRace.location      = New-Object System.Drawing.Point($Margin,($DefaultFontHeight - ($Margin + $CheckHeight)))
+$ShowNotJudgedRace.location      = New-Object System.Drawing.Point($Margin,($DefaultFormHeight - ($Margin + $CheckHeight)))
 $ShowNotJudgedRace.Font          = 'Microsoft Sans Serif,10'
 
 $TTJudgedRace                    = New-Object System.Windows.Forms.ToolTip
@@ -140,7 +143,7 @@ $ShowJudgedRace.AutoSize         = $false
 $ShowJudgedRace.BackColor        = "#ff80ff"
 $ShowJudgedRace.width            = $CheckWidth
 $ShowJudgedRace.height           = $CheckHeight
-$ShowJudgedRace.location         = New-Object System.Drawing.Point((2 * $Margin + $CheckWidth),($DefaultFontHeight - ($Margin + $CheckHeight)))
+$ShowJudgedRace.location         = New-Object System.Drawing.Point((2 * $Margin + $CheckWidth),($DefaultFormHeight - ($Margin + $CheckHeight)))
 $ShowJudgedRace.Font             = 'Microsoft Sans Serif,10'
 
 $TTOptions.SetToolTip($Options,$TextTTOptions)
@@ -154,7 +157,6 @@ $LynxWrapper.controls.AddRange(@($Options,$Refresh,$RaceList,$ShowNewRaceSingle,
 $RaceList.Add_Click({ handleListviewclick $this $_ })
 
 function handleListviewclick ($sender,$event) { }
-
 
 #Write your logic code here
 

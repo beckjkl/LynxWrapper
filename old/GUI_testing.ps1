@@ -142,7 +142,11 @@ $RaceList.Items.Add($Race2)
 $RaceList.Items[0].UseItemStyleForSubItems = $false
 $RaceList.Items[0].SubItems[1].BackColor="#38ea2e"
 $RaceList.Items[1].UseItemStyleForSubItems = $false
-
+$RaceList.Items[0].ToolTipText="Race 1"
+$RaceList.ShowItemToolTips
+$TTRace2                    = New-Object system.Windows.Forms.ToolTip
+$TTRace2.ToolTipTitle       = "Race2"
+$TTRace2.SetToolTip($RaceList,'Text Race2')
 
 
 $RaceList.Add_Click({Write-Host $RaceList.SelectedIndices})
