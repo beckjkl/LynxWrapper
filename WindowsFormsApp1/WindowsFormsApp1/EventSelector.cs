@@ -63,7 +63,15 @@ namespace WindowsFormsApp1
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            
+            if (SelectNewEvent.Enabled)
+            {
+
+            }
+            if (SelectExistingEvent.Enabled)
+            {
+
+            }
+            this.Close();
         }
 
         private void SelectNewEvent_CheckedChanged(object sender, EventArgs e)
@@ -78,6 +86,16 @@ namespace WindowsFormsApp1
         {
             SelectedEventBox.Enabled = SelectExistingEvent.Checked;
             SelectExistingEventPath.Enabled = SelectExistingEvent.Checked;
+        }
+
+        private void SelectNoEvent_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

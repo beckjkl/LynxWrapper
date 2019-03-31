@@ -1,0 +1,23 @@
+Settings
+	Eventview
+		ShowPlanedRaces
+		ShowNewSingleUserRaces
+		ShowNewMultiuserRaces
+		ShowNotJudgedRaces
+		ShowJugedRaces
+		ActiveEventPath
+	Eventselector
+		Eventname
+		EventPath (Prefilled)
+		EventFullpath
+		EventExistingPath (Prefilled)
+	OtpionsView
+		EventBasePath + Temp
+		EventPathTemplate + Temp
+		SeltecPath + Temp
+		ActivateSeltecRead + Temp
+		ChangeResultPath + Temp
+		ResultPath + Temp
+		SetLynxSettings + TEmp
+		StartLynx + Temp
+		

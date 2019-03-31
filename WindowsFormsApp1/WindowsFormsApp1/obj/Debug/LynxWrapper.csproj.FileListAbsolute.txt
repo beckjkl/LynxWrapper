@@ -21,3 +21,15 @@ C:\Users\beckj\Documents\LynxWrapper\WindowsFormsApp1\WindowsFormsApp1\obj\Debug
 C:\Users\beckj\Documents\LynxWrapper\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\LynxWrapper.csproj.CoreCompileInputs.cache
 C:\Users\beckj\Documents\LynxWrapper\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\beckj\Documents\LynxWrapper\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\Projekte\Lynxwrapper\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+D:\Projekte\Lynxwrapper\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\Projekte\Lynxwrapper\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\Projekte\Lynxwrapper\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\LynxWrapper.csprojAssemblyReference.cache
+D:\Projekte\Lynxwrapper\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.EventSelector.resources
+D:\Projekte\Lynxwrapper\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.LynxWrapper.resources
+D:\Projekte\Lynxwrapper\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+D:\Projekte\Lynxwrapper\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\LynxWrapper.csproj.GenerateResource.cache
+D:\Projekte\Lynxwrapper\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\LynxWrapper.csproj.CoreCompileInputs.cache
+D:\Projekte\Lynxwrapper\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\Projekte\Lynxwrapper\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\Projekte\Lynxwrapper\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.OptionsView.resources

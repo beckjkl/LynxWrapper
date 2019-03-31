@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="RaceList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="RaceListView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="Race.Text" xml:space="preserve">
@@ -140,7 +140,7 @@
   <data name="LastModified.Width" type="System.Int32, mscorlib">
     <value>191</value>
   </data>
-  <data name="RaceList.Groups" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="RaceListView.Groups" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
@@ -150,7 +150,7 @@
         bWVudAEAAAAHdmFsdWVfXwAIAgAAAAAAAAAKBgUAAAAJTmV3U2luZ2xlCw==
 </value>
   </data>
-  <data name="RaceList.Groups1" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="RaceListView.Groups1" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
@@ -160,7 +160,7 @@
         bWVudAEAAAAHdmFsdWVfXwAIAgAAAAAAAAAKBgUAAAAITmV3TXVsdGkL
 </value>
   </data>
-  <data name="RaceList.Groups2" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="RaceListView.Groups2" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
@@ -170,7 +170,7 @@
         bWVudAEAAAAHdmFsdWVfXwAIAgAAAAAAAAAKBgUAAAAJTm90SnVkZ2VkCw==
 </value>
   </data>
-  <data name="RaceList.Groups3" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="RaceListView.Groups3" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
@@ -181,252 +181,234 @@
 </value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="RaceList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 95</value>
+  <data name="RaceListView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 81</value>
   </data>
-  <data name="RaceList.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="RaceListView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>594, 307</value>
   </data>
-  <data name="RaceList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>742, 360</value>
-  </data>
-  <data name="RaceList.TabIndex" type="System.Int32, mscorlib">
+  <data name="RaceListView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;RaceList.Name" xml:space="preserve">
-    <value>RaceList</value>
+  <data name="&gt;&gt;RaceListView.Name" xml:space="preserve">
+    <value>RaceListView</value>
   </data>
-  <data name="&gt;&gt;RaceList.Type" xml:space="preserve">
+  <data name="&gt;&gt;RaceListView.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;RaceList.Parent" xml:space="preserve">
+  <data name="&gt;&gt;RaceListView.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;RaceList.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="Options.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
-  </data>
-  <data name="Options.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="Options.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 20</value>
-  </data>
-  <data name="Options.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="Options.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 60</value>
-  </data>
-  <data name="Options.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="Options.Text" xml:space="preserve">
-    <value>Optionen</value>
+  <data name="&gt;&gt;RaceListView.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <metadata name="TTEventview.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="Options.ToolTip" xml:space="preserve">
-    <value>Zeigt die Optionen</value>
-  </data>
-  <data name="&gt;&gt;Options.Name" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="&gt;&gt;Options.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Options.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Options.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="EventSelect.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="EventSelect.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="OptionsButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
-  <data name="EventSelect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="OptionsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="EventSelect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>562, 20</value>
+  <data name="OptionsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 17</value>
   </data>
-  <data name="EventSelect.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="OptionsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 51</value>
   </data>
-  <data name="EventSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 60</value>
-  </data>
-  <data name="EventSelect.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="EventSelect.Text" xml:space="preserve">
-    <value>Eventauswahl</value>
-  </data>
-  <data name="EventSelect.ToolTip" xml:space="preserve">
-    <value>Zeigt die Eventauswahl</value>
-  </data>
-  <data name="&gt;&gt;EventSelect.Name" xml:space="preserve">
-    <value>EventSelect</value>
-  </data>
-  <data name="&gt;&gt;EventSelect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;EventSelect.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;EventSelect.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="NewRaceSingle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="NewRaceSingle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="NewRaceSingle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 470</value>
-  </data>
-  <data name="NewRaceSingle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="NewRaceSingle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 25</value>
-  </data>
-  <data name="NewRaceSingle.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="NewRaceSingle.Text" xml:space="preserve">
-    <value>Neue Läufe (Single User)</value>
-  </data>
-  <data name="NewRaceSingle.ToolTip" xml:space="preserve">
-    <value>Zeige neue Läufe in der Liste</value>
-  </data>
-  <data name="&gt;&gt;NewRaceSingle.Name" xml:space="preserve">
-    <value>NewRaceSingle</value>
-  </data>
-  <data name="&gt;&gt;NewRaceSingle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NewRaceSingle.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;NewRaceSingle.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="NewRaceMulti.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="NewRaceMulti.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="NewRaceMulti.Location" type="System.Drawing.Point, System.Drawing">
-    <value>527, 470</value>
-  </data>
-  <data name="NewRaceMulti.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="NewRaceMulti.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 25</value>
-  </data>
-  <data name="NewRaceMulti.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="NewRaceMulti.Text" xml:space="preserve">
-    <value>Neue Läufe (Multi User)</value>
-  </data>
-  <data name="NewRaceMulti.ToolTip" xml:space="preserve">
-    <value>Zeige neue Läufe im Multi User Modus in der Liste</value>
-  </data>
-  <data name="&gt;&gt;NewRaceMulti.Name" xml:space="preserve">
-    <value>NewRaceMulti</value>
-  </data>
-  <data name="&gt;&gt;NewRaceMulti.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NewRaceMulti.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;NewRaceMulti.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="RaceNotJudged.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="RaceNotJudged.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="RaceNotJudged.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 510</value>
-  </data>
-  <data name="RaceNotJudged.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="RaceNotJudged.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 25</value>
-  </data>
-  <data name="RaceNotJudged.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="RaceNotJudged.Text" xml:space="preserve">
-    <value>Nicht ausgewertete Läufe</value>
-  </data>
-  <data name="RaceNotJudged.ToolTip" xml:space="preserve">
-    <value>Zeige nicht ausgewertete Läufe mit BIlddaten in der Liste</value>
-  </data>
-  <data name="&gt;&gt;RaceNotJudged.Name" xml:space="preserve">
-    <value>RaceNotJudged</value>
-  </data>
-  <data name="&gt;&gt;RaceNotJudged.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RaceNotJudged.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;RaceNotJudged.ZOrder" xml:space="preserve">
+  <data name="OptionsButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="RaceJudged.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+  <data name="OptionsButton.Text" xml:space="preserve">
+    <value>Optionen</value>
   </data>
-  <data name="RaceJudged.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="OptionsButton.ToolTip" xml:space="preserve">
+    <value>Zeigt die Optionen</value>
   </data>
-  <data name="RaceJudged.Location" type="System.Drawing.Point, System.Drawing">
-    <value>527, 510</value>
+  <data name="&gt;&gt;OptionsButton.Name" xml:space="preserve">
+    <value>OptionsButton</value>
   </data>
-  <data name="RaceJudged.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="&gt;&gt;OptionsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="RaceJudged.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 25</value>
-  </data>
-  <data name="RaceJudged.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="RaceJudged.Text" xml:space="preserve">
-    <value>Ausgewertete Läufe</value>
-  </data>
-  <data name="RaceJudged.ToolTip" xml:space="preserve">
-    <value>Zeige ausgewertete Läufe in der Liste</value>
-  </data>
-  <data name="&gt;&gt;RaceJudged.Name" xml:space="preserve">
-    <value>RaceJudged</value>
-  </data>
-  <data name="&gt;&gt;RaceJudged.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RaceJudged.Parent" xml:space="preserve">
+  <data name="&gt;&gt;OptionsButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;RaceJudged.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;OptionsButton.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
+  <data name="EventSelectButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="EventSelectButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="EventSelectButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="EventSelectButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>450, 17</value>
+  </data>
+  <data name="EventSelectButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 51</value>
+  </data>
+  <data name="EventSelectButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="EventSelectButton.Text" xml:space="preserve">
+    <value>Eventauswahl</value>
+  </data>
+  <data name="EventSelectButton.ToolTip" xml:space="preserve">
+    <value>Zeigt die Eventauswahl</value>
+  </data>
+  <data name="&gt;&gt;EventSelectButton.Name" xml:space="preserve">
+    <value>EventSelectButton</value>
+  </data>
+  <data name="&gt;&gt;EventSelectButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EventSelectButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;EventSelectButton.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="NewRaceSingleCheck.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="NewRaceSingleCheck.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="NewRaceSingleCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 440</value>
+  </data>
+  <data name="NewRaceSingleCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 21</value>
+  </data>
+  <data name="NewRaceSingleCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="NewRaceSingleCheck.Text" xml:space="preserve">
+    <value>Neue Läufe (Single User)</value>
+  </data>
+  <data name="NewRaceSingleCheck.ToolTip" xml:space="preserve">
+    <value>Zeige neue Läufe in der Liste</value>
+  </data>
+  <data name="&gt;&gt;NewRaceSingleCheck.Name" xml:space="preserve">
+    <value>NewRaceSingleCheck</value>
+  </data>
+  <data name="&gt;&gt;NewRaceSingleCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NewRaceSingleCheck.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;NewRaceSingleCheck.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="NewRaceMultiCheck.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="NewRaceMultiCheck.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="NewRaceMultiCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>422, 440</value>
+  </data>
+  <data name="NewRaceMultiCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 21</value>
+  </data>
+  <data name="NewRaceMultiCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="NewRaceMultiCheck.Text" xml:space="preserve">
+    <value>Neue Läufe (Multi User)</value>
+  </data>
+  <data name="NewRaceMultiCheck.ToolTip" xml:space="preserve">
+    <value>Zeige neue Läufe im Multi User Modus in der Liste</value>
+  </data>
+  <data name="&gt;&gt;NewRaceMultiCheck.Name" xml:space="preserve">
+    <value>NewRaceMultiCheck</value>
+  </data>
+  <data name="&gt;&gt;NewRaceMultiCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NewRaceMultiCheck.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;NewRaceMultiCheck.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="RaceNotJudgedCheck.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="RaceNotJudgedCheck.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="RaceNotJudgedCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 474</value>
+  </data>
+  <data name="RaceNotJudgedCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 21</value>
+  </data>
+  <data name="RaceNotJudgedCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="RaceNotJudgedCheck.Text" xml:space="preserve">
+    <value>Nicht ausgewertete Läufe</value>
+  </data>
+  <data name="RaceNotJudgedCheck.ToolTip" xml:space="preserve">
+    <value>Zeige nicht ausgewertete Läufe mit BIlddaten in der Liste</value>
+  </data>
+  <data name="&gt;&gt;RaceNotJudgedCheck.Name" xml:space="preserve">
+    <value>RaceNotJudgedCheck</value>
+  </data>
+  <data name="&gt;&gt;RaceNotJudgedCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RaceNotJudgedCheck.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;RaceNotJudgedCheck.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="RaceJudgedCheck.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="RaceJudgedCheck.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="RaceJudgedCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>422, 474</value>
+  </data>
+  <data name="RaceJudgedCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 21</value>
+  </data>
+  <data name="RaceJudgedCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="RaceJudgedCheck.Text" xml:space="preserve">
+    <value>Ausgewertete Läufe</value>
+  </data>
+  <data name="RaceJudgedCheck.ToolTip" xml:space="preserve">
+    <value>Zeige ausgewertete Läufe in der Liste</value>
+  </data>
+  <data name="&gt;&gt;RaceJudgedCheck.Name" xml:space="preserve">
+    <value>RaceJudgedCheck</value>
+  </data>
+  <data name="&gt;&gt;RaceJudgedCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RaceJudgedCheck.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;RaceJudgedCheck.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="TTEventview.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>20, 5</value>
+  </metadata>
   <metadata name="EventWatcher.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>152, 9</value>
   </metadata>
@@ -440,22 +422,43 @@
     <value>34</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>10, 20</value>
+    <value>8, 17</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>782, 553</value>
+    <value>626, 510</value>
+  </data>
+  <data name="PlanedRaceCheck.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="PlanedRaceCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 406</value>
+  </data>
+  <data name="PlanedRaceCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 21</value>
+  </data>
+  <data name="PlanedRaceCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="PlanedRaceCheck.Text" xml:space="preserve">
+    <value>Geplante Läufe</value>
+  </data>
+  <data name="&gt;&gt;PlanedRaceCheck.Name" xml:space="preserve">
+    <value>PlanedRaceCheck</value>
+  </data>
+  <data name="&gt;&gt;PlanedRaceCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PlanedRaceCheck.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PlanedRaceCheck.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt</value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>545, 285</value>
+    <value>439, 308</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Lynxwrapper</value>

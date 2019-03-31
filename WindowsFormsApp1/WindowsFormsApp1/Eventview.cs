@@ -55,7 +55,7 @@ namespace WindowsFormsApp1
 
         private void Options_Click(object sender, EventArgs e)
         {
-            var optionViewer = new OptionView();
+            var optionViewer = new OptionsView();
             optionViewer.ShowDialog();
         }
     }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class OptionView : Form
+    public partial class OptionsView : Form
     {
-        public OptionView()
+        public OptionsView()
         {
             InitializeComponent();
         }
@@ -28,6 +28,21 @@ namespace WindowsFormsApp1
         }
 
         private void SelectBasePath_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TestTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
 
         }
