@@ -47,5 +47,16 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void EventWatcher_Changed(object sender, System.IO.FileSystemEventArgs e)
+        {
+
+        }
+
+        private void Options_Click(object sender, EventArgs e)
+        {
+            var optionViewer = new OptionView();
+            optionViewer.ShowDialog();
+        }
     }
 }

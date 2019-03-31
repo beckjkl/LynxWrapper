@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LynxWrapper));
             this.RaceList = new System.Windows.Forms.ListView();
+            this.Race = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.LastModified = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Options = new System.Windows.Forms.Button();
             this.EventSelect = new System.Windows.Forms.Button();
             this.NewRaceSingle = new System.Windows.Forms.CheckBox();
@@ -38,9 +41,8 @@
             this.RaceNotJudged = new System.Windows.Forms.CheckBox();
             this.RaceJudged = new System.Windows.Forms.CheckBox();
             this.TTEventview = new System.Windows.Forms.ToolTip(this.components);
-            this.Race = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.LastModified = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.EventWatcher = new System.IO.FileSystemWatcher();
+            ((System.ComponentModel.ISupportInitialize)(this.EventWatcher)).BeginInit();
             this.SuspendLayout();
             // 
             // RaceList
@@ -63,12 +65,25 @@
             this.RaceList.View = System.Windows.Forms.View.Details;
             this.RaceList.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
+            // Race
+            // 
+            resources.ApplyResources(this.Race, "Race");
+            // 
+            // status
+            // 
+            resources.ApplyResources(this.status, "status");
+            // 
+            // LastModified
+            // 
+            resources.ApplyResources(this.LastModified, "LastModified");
+            // 
             // Options
             // 
             resources.ApplyResources(this.Options, "Options");
             this.Options.Name = "Options";
             this.TTEventview.SetToolTip(this.Options, resources.GetString("Options.ToolTip"));
             this.Options.UseVisualStyleBackColor = true;
+            this.Options.Click += new System.EventHandler(this.Options_Click);
             // 
             // EventSelect
             // 
@@ -92,7 +107,7 @@
             // NewRaceMulti
             // 
             resources.ApplyResources(this.NewRaceMulti, "NewRaceMulti");
-            this.NewRaceMulti.BackColor = System.Drawing.Color.Lime;
+            this.NewRaceMulti.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.NewRaceMulti.Checked = true;
             this.NewRaceMulti.CheckState = System.Windows.Forms.CheckState.Checked;
             this.NewRaceMulti.Name = "NewRaceMulti";
@@ -103,7 +118,7 @@
             // RaceNotJudged
             // 
             resources.ApplyResources(this.RaceNotJudged, "RaceNotJudged");
-            this.RaceNotJudged.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.RaceNotJudged.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.RaceNotJudged.Checked = true;
             this.RaceNotJudged.CheckState = System.Windows.Forms.CheckState.Checked;
             this.RaceNotJudged.Name = "RaceNotJudged";
@@ -113,7 +128,7 @@
             // RaceJudged
             // 
             resources.ApplyResources(this.RaceJudged, "RaceJudged");
-            this.RaceJudged.BackColor = System.Drawing.Color.Blue;
+            this.RaceJudged.BackColor = System.Drawing.Color.Lime;
             this.RaceJudged.Checked = true;
             this.RaceJudged.CheckState = System.Windows.Forms.CheckState.Checked;
             this.RaceJudged.Name = "RaceJudged";
@@ -121,17 +136,13 @@
             this.RaceJudged.UseVisualStyleBackColor = false;
             this.RaceJudged.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
-            // Race
+            // EventWatcher
             // 
-            resources.ApplyResources(this.Race, "Race");
-            // 
-            // status
-            // 
-            resources.ApplyResources(this.status, "status");
-            // 
-            // LastModified
-            // 
-            resources.ApplyResources(this.LastModified, "LastModified");
+            this.EventWatcher.EnableRaisingEvents = true;
+            this.EventWatcher.Filter = global::WindowsFormsApp1.Properties.Settings.Default.EventComponents;
+            this.EventWatcher.Path = global::WindowsFormsApp1.Properties.Settings.Default.Eventpath;
+            this.EventWatcher.SynchronizingObject = this;
+            this.EventWatcher.Changed += new System.IO.FileSystemEventHandler(this.EventWatcher_Changed);
             // 
             // LynxWrapper
             // 
@@ -146,6 +157,7 @@
             this.Controls.Add(this.RaceList);
             this.Name = "LynxWrapper";
             this.Load += new System.EventHandler(this.LynxWrapper_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.EventWatcher)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -163,6 +175,7 @@
         private System.Windows.Forms.ColumnHeader Race;
         private System.Windows.Forms.ColumnHeader status;
         private System.Windows.Forms.ColumnHeader LastModified;
+        private System.IO.FileSystemWatcher EventWatcher;
     }
 }
 

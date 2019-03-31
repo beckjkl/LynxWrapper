@@ -57,6 +57,12 @@
     <Compile Include="EventSelector.Designer.cs">
       <DependentUpon>EventSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="OptionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptionView.Designer.cs">
+      <DependentUpon>OptionView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="EventSelector.resx">
@@ -64,6 +70,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Eventview.resx">
       <DependentUpon>Eventview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionView.resx">
+      <DependentUpon>OptionView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -86,6 +95,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

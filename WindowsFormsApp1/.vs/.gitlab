@@ -1,0 +1,13 @@
+{
+  "User": {
+    "Id": 2210521,
+    "Username": "beckjkl",
+    "Name": "Jan Beck",
+    "Email": "jan.beck.email@web.de",
+    "AvatarUrl": "https://secure.gravatar.com/avatar/2f9874adfb9c40239f9cf1d56f8c3e78?s=80&d=identicon",
+    "PrivateToken": "748e906415ac98052965a282f1fee8a5b50cd6971427c98fb347883ef9d2fefe",
+    "Host": "https://gitlab.com",
+    "TwoFactorEnabled": false,
+    "ApiVersion": 3
+  }
+}

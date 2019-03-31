@@ -126,7 +126,7 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Race.Width" type="System.Int32, mscorlib">
-    <value>161</value>
+    <value>213</value>
   </data>
   <data name="status.Text" xml:space="preserve">
     <value>Status</value>
@@ -205,11 +205,11 @@
   <data name="&gt;&gt;RaceList.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <metadata name="TTEventview.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="Options.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="Options.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Options.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 20</value>
@@ -226,6 +226,9 @@
   <data name="Options.Text" xml:space="preserve">
     <value>Optionen</value>
   </data>
+  <metadata name="TTEventview.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="Options.ToolTip" xml:space="preserve">
     <value>Zeigt die Optionen</value>
   </data>
@@ -246,6 +249,9 @@
   </data>
   <data name="EventSelect.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="EventSelect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="EventSelect.Location" type="System.Drawing.Point, System.Drawing">
     <value>562, 20</value>
@@ -280,6 +286,9 @@
   <data name="NewRaceSingle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
+  <data name="NewRaceSingle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="NewRaceSingle.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 470</value>
   </data>
@@ -313,6 +322,9 @@
   <data name="NewRaceMulti.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
+  <data name="NewRaceMulti.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="NewRaceMulti.Location" type="System.Drawing.Point, System.Drawing">
     <value>527, 470</value>
   </data>
@@ -328,9 +340,6 @@
   <data name="NewRaceMulti.Text" xml:space="preserve">
     <value>Neue Läufe (Multi User)</value>
   </data>
-  <metadata name="TTEventview.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="NewRaceMulti.ToolTip" xml:space="preserve">
     <value>Zeige neue Läufe im Multi User Modus in der Liste</value>
   </data>
@@ -348,6 +357,9 @@
   </data>
   <data name="RaceNotJudged.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
+  </data>
+  <data name="RaceNotJudged.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="RaceNotJudged.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 510</value>
@@ -382,6 +394,9 @@
   <data name="RaceJudged.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
+  <data name="RaceJudged.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="RaceJudged.Location" type="System.Drawing.Point, System.Drawing">
     <value>527, 510</value>
   </data>
@@ -412,6 +427,9 @@
   <data name="&gt;&gt;RaceJudged.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="EventWatcher.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>152, 9</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -430,6 +448,9 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt</value>
   </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
@@ -438,12 +459,6 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Lynxwrapper</value>
-  </data>
-  <data name="&gt;&gt;TTEventview.Name" xml:space="preserve">
-    <value>TTEventview</value>
-  </data>
-  <data name="&gt;&gt;TTEventview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Race.Name" xml:space="preserve">
     <value>Race</value>
@@ -462,6 +477,18 @@
   </data>
   <data name="&gt;&gt;LastModified.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TTEventview.Name" xml:space="preserve">
+    <value>TTEventview</value>
+  </data>
+  <data name="&gt;&gt;TTEventview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EventWatcher.Name" xml:space="preserve">
+    <value>EventWatcher</value>
+  </data>
+  <data name="&gt;&gt;EventWatcher.Type" xml:space="preserve">
+    <value>System.IO.FileSystemWatcher, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>LynxWrapper</value>
