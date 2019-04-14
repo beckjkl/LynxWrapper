@@ -182,10 +182,13 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="RaceListView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 81</value>
+    <value>20, 95</value>
+  </data>
+  <data name="RaceListView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="RaceListView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>594, 307</value>
+    <value>742, 360</value>
   </data>
   <data name="RaceListView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -202,9 +205,6 @@
   <data name="&gt;&gt;RaceListView.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <metadata name="TTEventview.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="OptionsButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
@@ -212,10 +212,13 @@
     <value>NoControl</value>
   </data>
   <data name="OptionsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 17</value>
+    <value>20, 20</value>
+  </data>
+  <data name="OptionsButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="OptionsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 51</value>
+    <value>200, 60</value>
   </data>
   <data name="OptionsButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -223,6 +226,9 @@
   <data name="OptionsButton.Text" xml:space="preserve">
     <value>Optionen</value>
   </data>
+  <metadata name="TTEventview.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>20, 5</value>
+  </metadata>
   <data name="OptionsButton.ToolTip" xml:space="preserve">
     <value>Zeigt die Optionen</value>
   </data>
@@ -248,10 +254,13 @@
     <value>NoControl</value>
   </data>
   <data name="EventSelectButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>450, 17</value>
+    <value>562, 20</value>
+  </data>
+  <data name="EventSelectButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="EventSelectButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 51</value>
+    <value>200, 60</value>
   </data>
   <data name="EventSelectButton.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -281,10 +290,13 @@
     <value>NoControl</value>
   </data>
   <data name="NewRaceSingleCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 440</value>
+    <value>20, 518</value>
+  </data>
+  <data name="NewRaceSingleCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="NewRaceSingleCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 21</value>
+    <value>235, 25</value>
   </data>
   <data name="NewRaceSingleCheck.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -314,10 +326,13 @@
     <value>NoControl</value>
   </data>
   <data name="NewRaceMultiCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>422, 440</value>
+    <value>528, 518</value>
+  </data>
+  <data name="NewRaceMultiCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="NewRaceMultiCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 21</value>
+    <value>235, 25</value>
   </data>
   <data name="NewRaceMultiCheck.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -347,10 +362,13 @@
     <value>NoControl</value>
   </data>
   <data name="RaceNotJudgedCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 474</value>
+    <value>20, 558</value>
+  </data>
+  <data name="RaceNotJudgedCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="RaceNotJudgedCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 21</value>
+    <value>235, 25</value>
   </data>
   <data name="RaceNotJudgedCheck.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -380,10 +398,13 @@
     <value>NoControl</value>
   </data>
   <data name="RaceJudgedCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>422, 474</value>
+    <value>528, 558</value>
+  </data>
+  <data name="RaceJudgedCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="RaceJudgedCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 21</value>
+    <value>235, 25</value>
   </data>
   <data name="RaceJudgedCheck.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -406,9 +427,6 @@
   <data name="&gt;&gt;RaceJudgedCheck.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="TTEventview.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>20, 5</value>
-  </metadata>
   <metadata name="EventWatcher.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>152, 9</value>
   </metadata>
@@ -422,19 +440,22 @@
     <value>34</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 17</value>
+    <value>10, 20</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>626, 510</value>
+    <value>782, 600</value>
   </data>
   <data name="PlanedRaceCheck.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
   <data name="PlanedRaceCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 406</value>
+    <value>20, 478</value>
+  </data>
+  <data name="PlanedRaceCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="PlanedRaceCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 21</value>
+    <value>235, 25</value>
   </data>
   <data name="PlanedRaceCheck.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -457,8 +478,11 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt</value>
   </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>439, 308</value>
+    <value>544, 354</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Lynxwrapper</value>

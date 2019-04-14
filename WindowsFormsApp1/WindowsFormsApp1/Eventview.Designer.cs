@@ -80,7 +80,7 @@
             // 
             // OptionsButton
             // 
-            this.OptionsButton.BackColor = System.Drawing.SystemColors.Control;
+            this.OptionsButton.BackColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.OptionsButton, "OptionsButton");
             this.OptionsButton.Name = "OptionsButton";
             this.TTEventview.SetToolTip(this.OptionsButton, resources.GetString("OptionsButton.ToolTip"));
@@ -90,7 +90,7 @@
             // EventSelectButton
             // 
             resources.ApplyResources(this.EventSelectButton, "EventSelectButton");
-            this.EventSelectButton.BackColor = System.Drawing.SystemColors.Control;
+            this.EventSelectButton.BackColor = System.Drawing.SystemColors.ControlLight;
             this.EventSelectButton.Name = "EventSelectButton";
             this.TTEventview.SetToolTip(this.EventSelectButton, resources.GetString("EventSelectButton.ToolTip"));
             this.EventSelectButton.UseVisualStyleBackColor = false;
@@ -150,7 +150,7 @@
             // PlanedRaceCheck
             // 
             resources.ApplyResources(this.PlanedRaceCheck, "PlanedRaceCheck");
-            this.PlanedRaceCheck.BackColor = System.Drawing.Color.White;
+            this.PlanedRaceCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.PlanedRaceCheck.Name = "PlanedRaceCheck";
             this.PlanedRaceCheck.UseVisualStyleBackColor = false;
             // 
@@ -158,7 +158,7 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.PlanedRaceCheck);
             this.Controls.Add(this.RaceJudgedCheck);
             this.Controls.Add(this.RaceNotJudgedCheck);

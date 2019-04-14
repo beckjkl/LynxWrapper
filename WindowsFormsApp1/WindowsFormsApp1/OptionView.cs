@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Properties;
 
 namespace WindowsFormsApp1
 {
@@ -45,6 +46,23 @@ namespace WindowsFormsApp1
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OptionsView_Load(object sender, EventArgs e)
+        {
+            Settings.Default.TempEventBasePath = Settings.Default.EventBasePath;
+            Settings.Default.TempEventPathTemplate = Settings.Default.EventPathTemplate;
+            Settings.Default.TempSeltecPath = Settings.Default.SeltecPath;
+            Settings.Default.TempActivateSeltecRead = Settings.Default.ActivateSeltecRead;
+            Settings.Default.TempResultPath = Settings.Default.ResultPath;
+            Settings.Default.TempChangeResultPath = Settings.Default.ChangeResultPath;
+            Settings.Default.TempSetLynxSettings = Settings.Default.SetLynxSettings;
+            Settings.Default.TempStartLynx = Settings.Default.StartLynx;
         }
     }
 }
