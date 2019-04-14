@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
 
         private void LynxWrapper_Load(object sender, EventArgs e)
         {
-            
+            Properties.Settings.Default.ActiveEventPath = "";
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
@@ -29,6 +29,11 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (!Properties.Settings.Default.InitialSettingsDone)
+            {
+                MessageBox.Show("Bitte zuerst die Einstellungen anpassen.", "Fehler: Einstellungen nicht gesetzt", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             var selector = new EventSelector();
             selector.ShowDialog();
         }
