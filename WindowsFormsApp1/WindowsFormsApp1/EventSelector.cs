@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
 
         private void EventSelector_Load(object sender, EventArgs e)
         {
+
             Settings.Default.Eventpath = Settings.Default.EventBasePath;
 
             Settings.Default.ExistingEventPath = "";

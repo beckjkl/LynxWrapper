@@ -71,6 +71,8 @@ namespace WindowsFormsApp1
             Settings.Default.TempResultPath = Settings.Default.ResultPath;
             Settings.Default.TempChangeResultPath = Settings.Default.ChangeResultPath;
             Settings.Default.TempSetLynxSettings = Settings.Default.SetLynxSettings;
+            Settings.Default.TempSetBackupPath = Settings.Default.SetBackupPath;
+            Settings.Default.TempBackupPath = Settings.Default.BackupPath;
             Settings.Default.TempStartLynx = Settings.Default.StartLynx;
             Settings.Default.TempIsValidnameTemplate = Settings.Default.IsValidNameTemplate;
             InvalidTemplateSign.Visible = !Settings.Default.TempIsValidnameTemplate;
@@ -89,7 +91,7 @@ namespace WindowsFormsApp1
             }
             if (LynxKey == null)
             {
-                MessageBox.Show("Lynx-Installation konnte nicht gefunden werden. Bitte erst FinishLynx installieren!", "Fehler: Invalider Basispfad", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lynx-Installation konnte nicht gefunden werden. Bitte erst FinishLynx installieren!", "Fehler: Lynx nicht installiert", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             var LynxVersions = LynxKey.GetSubKeyNames();
@@ -130,14 +132,21 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            if(Settings.Default.TempChangeResultPath && !System.IO.Path.IsPathRooted(Settings.Default.TempResultPath))
+            if (!System.IO.Path.IsPathRooted(Settings.Default.TempBackupPath))
+            {
+                MessageBox.Show("Backup-Basisordner ist kein valider Pfad. Bitte korrigieren", "Fehler: Invalide Backup-Basisordner", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (Settings.Default.TempChangeResultPath && !System.IO.Path.IsPathRooted(Settings.Default.TempResultPath))
             {
                 MessageBox.Show("Pfad für Ergebnisse ist kein valider Pfad. Bitte korrigieren", "Fehler: Invalide Ergebnispfad", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            try{System.IO.Directory.CreateDirectory(Settings.Default.TempEventBasePath);} catch (ArgumentException) { }
-            try{System.IO.Directory.CreateDirectory(Settings.Default.TempSeltecPath);}catch (ArgumentException) { }
-            try{System.IO.Directory.CreateDirectory(Settings.Default.TempSeltecPath);}catch (ArgumentException) { }
+            try { System.IO.Directory.CreateDirectory(Settings.Default.TempEventBasePath);} catch (ArgumentException ex) { }
+            try { System.IO.Directory.CreateDirectory(Settings.Default.TempSeltecPath);}catch (ArgumentException ex) { }
+            try { System.IO.Directory.CreateDirectory(Settings.Default.TempSeltecPath);}catch (ArgumentException ex) { }
+            try { System.IO.Directory.CreateDirectory(Settings.Default.TempBackupPath);}catch (ArgumentException ex) { }
 
             Settings.Default.EventBasePath = Settings.Default.TempEventBasePath;
             Settings.Default.EventPathTemplate = Settings.Default.TempEventPathTemplate;
@@ -147,6 +156,8 @@ namespace WindowsFormsApp1
             Settings.Default.SeltecPath = Settings.Default.TempSeltecPath;
             Settings.Default.ResultPath = Settings.Default.TempResultPath;
             Settings.Default.ChangeResultPath = Settings.Default.TempChangeResultPath;
+            Settings.Default.SetBackupPath = Settings.Default.TempSetBackupPath;
+            Settings.Default.BackupPath = Settings.Default.TempBackupPath;
             Settings.Default.SetLynxSettings = Settings.Default.TempSetLynxSettings;
             Settings.Default.StartLynx = Settings.Default.TempStartLynx;
 
@@ -161,7 +172,7 @@ namespace WindowsFormsApp1
         private void TemplatePathBox_TextChanged(object sender, EventArgs e)
         {
             TextBox senderbox = (TextBox)sender;
-            String TempalteRegex = "^((\\w|\\s)*(\\{(Jahr|Tag|Monat|Eventname)\\})?\\\\?)*$";
+            String TempalteRegex = "^(((\\w|\\s)+|(\\{(Jahr|Tag|Monat|Eventname)\\}))+\\\\?)+$";
             Settings.Default.TempIsValidnameTemplate = System.Text.RegularExpressions.Regex.IsMatch(senderbox.Text, TempalteRegex);
             InvalidTemplateSign.Visible = !Settings.Default.TempIsValidnameTemplate;
             InvalidTemplateSign.Refresh();
@@ -185,6 +196,16 @@ namespace WindowsFormsApp1
             }
 
             Settings.Default.TempResultPath = BrowsePath.SelectedPath.ToString();
+        }
+
+        private void SelectBackupBasePathButton_Click(object sender, EventArgs e)
+        {
+            if (BrowsePath.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            Settings.Default.TempBackupPath = BrowsePath.SelectedPath.ToString();
         }
     }
 }

@@ -40,24 +40,30 @@
             this.FoundLynxVersion = new System.Windows.Forms.Label();
             this.OkButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.LynxVersionBox = new System.Windows.Forms.ComboBox();
+            this.EventFolderGroup = new System.Windows.Forms.GroupBox();
             this.InvalidTemplateSign = new System.Windows.Forms.PictureBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.ChangeResultPathCheck = new System.Windows.Forms.CheckBox();
+            this.SeltecGroup = new System.Windows.Forms.GroupBox();
+            this.ResultGroup = new System.Windows.Forms.GroupBox();
+            this.LynxVersionBox = new System.Windows.Forms.ComboBox();
+            this.TTOptions = new System.Windows.Forms.ToolTip(this.components);
+            this.BackupGroup = new System.Windows.Forms.GroupBox();
+            this.SelectBackupBasePathButton = new System.Windows.Forms.Button();
+            this.BackupPath = new System.Windows.Forms.Label();
+            this.SetBackupCheck = new System.Windows.Forms.CheckBox();
+            this.BackupBasePathBox = new System.Windows.Forms.TextBox();
             this.StartLynxCheck = new System.Windows.Forms.CheckBox();
             this.ChangeSeltecSettingsBox = new System.Windows.Forms.CheckBox();
             this.BasePathBox = new System.Windows.Forms.TextBox();
             this.TemplatePathBox = new System.Windows.Forms.TextBox();
             this.SeltecPathBox = new System.Windows.Forms.TextBox();
             this.ShowSeltecRacesBox = new System.Windows.Forms.CheckBox();
+            this.ChangeResultPathCheck = new System.Windows.Forms.CheckBox();
             this.ResultPathBox = new System.Windows.Forms.TextBox();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.EventFolderGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InvalidTemplateSign)).BeginInit();
+            this.SeltecGroup.SuspendLayout();
+            this.ResultGroup.SuspendLayout();
+            this.BackupGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // BasePath
@@ -66,7 +72,7 @@
             this.BasePath.Location = new System.Drawing.Point(43, 29);
             this.BasePath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.BasePath.Name = "BasePath";
-            this.BasePath.Size = new System.Drawing.Size(84, 17);
+            this.BasePath.Size = new System.Drawing.Size(100, 20);
             this.BasePath.TabIndex = 1;
             this.BasePath.Text = "Basisordner";
             // 
@@ -86,7 +92,7 @@
             this.NameTemplate.AutoSize = true;
             this.NameTemplate.Location = new System.Drawing.Point(43, 69);
             this.NameTemplate.Name = "NameTemplate";
-            this.NameTemplate.Size = new System.Drawing.Size(107, 17);
+            this.NameTemplate.Size = new System.Drawing.Size(125, 20);
             this.NameTemplate.TabIndex = 4;
             this.NameTemplate.Text = "Namensvorlage";
             // 
@@ -105,7 +111,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(43, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 17);
+            this.label1.Size = new System.Drawing.Size(43, 20);
             this.label1.TabIndex = 9;
             this.label1.Text = "Pfad";
             // 
@@ -134,9 +140,9 @@
             // FoundLynxVersion
             // 
             this.FoundLynxVersion.AutoSize = true;
-            this.FoundLynxVersion.Location = new System.Drawing.Point(12, 390);
+            this.FoundLynxVersion.Location = new System.Drawing.Point(12, 495);
             this.FoundLynxVersion.Name = "FoundLynxVersion";
-            this.FoundLynxVersion.Size = new System.Drawing.Size(93, 17);
+            this.FoundLynxVersion.Size = new System.Drawing.Size(111, 20);
             this.FoundLynxVersion.TabIndex = 18;
             this.FoundLynxVersion.Text = "Lynx Version:";
             // 
@@ -144,7 +150,7 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.OkButton.Location = new System.Drawing.Point(413, 425);
+            this.OkButton.Location = new System.Drawing.Point(413, 541);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(128, 34);
             this.OkButton.TabIndex = 14;
@@ -156,7 +162,7 @@
             // 
             this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelButton.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.CancelButton.Location = new System.Drawing.Point(563, 425);
+            this.CancelButton.Location = new System.Drawing.Point(564, 541);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(128, 34);
             this.CancelButton.TabIndex = 15;
@@ -164,63 +170,25 @@
             this.CancelButton.UseVisualStyleBackColor = false;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
-            // groupBox1
+            // EventFolderGroup
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.EventFolderGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.InvalidTemplateSign);
-            this.groupBox1.Controls.Add(this.BasePathBox);
-            this.groupBox1.Controls.Add(this.BasePath);
-            this.groupBox1.Controls.Add(this.NameTemplate);
-            this.groupBox1.Controls.Add(this.TemplatePathBox);
-            this.groupBox1.Controls.Add(this.SelectBasePathButton);
-            this.groupBox1.Controls.Add(this.templatePathExplanationButton);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(687, 103);
-            this.groupBox1.TabIndex = 23;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Ordnerstruktur für Events";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.SeltecPathBox);
-            this.groupBox2.Controls.Add(this.SelectSeltecPathButton);
-            this.groupBox2.Controls.Add(this.ShowSeltecRacesBox);
-            this.groupBox2.Location = new System.Drawing.Point(12, 121);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(687, 89);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Seltec-Laufvorlagen";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.ChangeResultPathCheck);
-            this.groupBox3.Controls.Add(this.SelectResultPathButton);
-            this.groupBox3.Controls.Add(this.ResultPathBox);
-            this.groupBox3.Location = new System.Drawing.Point(12, 216);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(687, 105);
-            this.groupBox3.TabIndex = 24;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Ergebnisse (.lif)";
-            // 
-            // LynxVersionBox
-            // 
-            this.LynxVersionBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.LynxVersionBox.FormattingEnabled = true;
-            this.LynxVersionBox.Location = new System.Drawing.Point(218, 387);
-            this.LynxVersionBox.Name = "LynxVersionBox";
-            this.LynxVersionBox.Size = new System.Drawing.Size(323, 25);
-            this.LynxVersionBox.TabIndex = 13;
+            this.EventFolderGroup.BackColor = System.Drawing.SystemColors.Control;
+            this.EventFolderGroup.Controls.Add(this.InvalidTemplateSign);
+            this.EventFolderGroup.Controls.Add(this.BasePathBox);
+            this.EventFolderGroup.Controls.Add(this.BasePath);
+            this.EventFolderGroup.Controls.Add(this.NameTemplate);
+            this.EventFolderGroup.Controls.Add(this.TemplatePathBox);
+            this.EventFolderGroup.Controls.Add(this.SelectBasePathButton);
+            this.EventFolderGroup.Controls.Add(this.templatePathExplanationButton);
+            this.EventFolderGroup.Location = new System.Drawing.Point(12, 12);
+            this.EventFolderGroup.Name = "EventFolderGroup";
+            this.EventFolderGroup.Size = new System.Drawing.Size(687, 103);
+            this.EventFolderGroup.TabIndex = 23;
+            this.EventFolderGroup.TabStop = false;
+            this.EventFolderGroup.Text = "Ordnerstruktur für Events";
+            this.EventFolderGroup.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // InvalidTemplateSign
             // 
@@ -232,31 +200,112 @@
             this.InvalidTemplateSign.Size = new System.Drawing.Size(32, 32);
             this.InvalidTemplateSign.TabIndex = 7;
             this.InvalidTemplateSign.TabStop = false;
-            this.toolTip1.SetToolTip(this.InvalidTemplateSign, "Die Namensvorlage kann nicht verarbeitet werden.\r\nBitte Korrigieren.\r\nFür mehr In" +
+            this.TTOptions.SetToolTip(this.InvalidTemplateSign, "Die Namensvorlage kann nicht verarbeitet werden.\r\nBitte Korrigieren.\r\nFür mehr In" +
         "formationen siehe \"Erklärung\".");
             // 
-            // ChangeResultPathCheck
+            // SeltecGroup
             // 
-            this.ChangeResultPathCheck.AutoSize = true;
-            this.ChangeResultPathCheck.Checked = global::WindowsFormsApp1.Properties.Settings.Default.TempChangeResultPath;
-            this.ChangeResultPathCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ChangeResultPathCheck.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::WindowsFormsApp1.Properties.Settings.Default, "TempChangeResultPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ChangeResultPathCheck.Location = new System.Drawing.Point(47, 26);
-            this.ChangeResultPathCheck.Name = "ChangeResultPathCheck";
-            this.ChangeResultPathCheck.Size = new System.Drawing.Size(333, 21);
-            this.ChangeResultPathCheck.TabIndex = 8;
-            this.ChangeResultPathCheck.Text = "Ergebnisse unter einem anderen Pfad speichern";
-            this.ChangeResultPathCheck.UseVisualStyleBackColor = true;
-            this.ChangeResultPathCheck.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.SeltecGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SeltecGroup.Controls.Add(this.label1);
+            this.SeltecGroup.Controls.Add(this.SeltecPathBox);
+            this.SeltecGroup.Controls.Add(this.SelectSeltecPathButton);
+            this.SeltecGroup.Controls.Add(this.ShowSeltecRacesBox);
+            this.SeltecGroup.Location = new System.Drawing.Point(12, 121);
+            this.SeltecGroup.Name = "SeltecGroup";
+            this.SeltecGroup.Size = new System.Drawing.Size(687, 89);
+            this.SeltecGroup.TabIndex = 7;
+            this.SeltecGroup.TabStop = false;
+            this.SeltecGroup.Text = "Seltec-Laufvorlagen";
+            // 
+            // ResultGroup
+            // 
+            this.ResultGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResultGroup.Controls.Add(this.ChangeResultPathCheck);
+            this.ResultGroup.Controls.Add(this.SelectResultPathButton);
+            this.ResultGroup.Controls.Add(this.ResultPathBox);
+            this.ResultGroup.Location = new System.Drawing.Point(12, 216);
+            this.ResultGroup.Name = "ResultGroup";
+            this.ResultGroup.Size = new System.Drawing.Size(687, 105);
+            this.ResultGroup.TabIndex = 24;
+            this.ResultGroup.TabStop = false;
+            this.ResultGroup.Text = "Ergebnisse (.lif)";
+            // 
+            // LynxVersionBox
+            // 
+            this.LynxVersionBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LynxVersionBox.FormattingEnabled = true;
+            this.LynxVersionBox.Location = new System.Drawing.Point(218, 498);
+            this.LynxVersionBox.Name = "LynxVersionBox";
+            this.LynxVersionBox.Size = new System.Drawing.Size(323, 28);
+            this.LynxVersionBox.TabIndex = 13;
+            // 
+            // BackupGroup
+            // 
+            this.BackupGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BackupGroup.Controls.Add(this.BackupPath);
+            this.BackupGroup.Controls.Add(this.SetBackupCheck);
+            this.BackupGroup.Controls.Add(this.SelectBackupBasePathButton);
+            this.BackupGroup.Controls.Add(this.BackupBasePathBox);
+            this.BackupGroup.Location = new System.Drawing.Point(12, 327);
+            this.BackupGroup.Name = "BackupGroup";
+            this.BackupGroup.Size = new System.Drawing.Size(687, 105);
+            this.BackupGroup.TabIndex = 25;
+            this.BackupGroup.TabStop = false;
+            this.BackupGroup.Text = "Backup";
+            // 
+            // SelectBackupBasePathButton
+            // 
+            this.SelectBackupBasePathButton.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.SelectBackupBasePathButton.Location = new System.Drawing.Point(552, 52);
+            this.SelectBackupBasePathButton.Name = "SelectBackupBasePathButton";
+            this.SelectBackupBasePathButton.Size = new System.Drawing.Size(127, 34);
+            this.SelectBackupBasePathButton.TabIndex = 10;
+            this.SelectBackupBasePathButton.Text = "Auswählen";
+            this.SelectBackupBasePathButton.UseVisualStyleBackColor = false;
+            this.SelectBackupBasePathButton.Click += new System.EventHandler(this.SelectBackupBasePathButton_Click);
+            // 
+            // BackupPath
+            // 
+            this.BackupPath.AutoSize = true;
+            this.BackupPath.Location = new System.Drawing.Point(43, 59);
+            this.BackupPath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.BackupPath.Name = "BackupPath";
+            this.BackupPath.Size = new System.Drawing.Size(162, 20);
+            this.BackupPath.TabIndex = 8;
+            this.BackupPath.Text = "Backup-Basisordner";
+            // 
+            // SetBackupCheck
+            // 
+            this.SetBackupCheck.AutoSize = true;
+            this.SetBackupCheck.Checked = global::WindowsFormsApp1.Properties.Settings.Default.TempSetBackupPath;
+            this.SetBackupCheck.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::WindowsFormsApp1.Properties.Settings.Default, "TempSetBackupPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.SetBackupCheck.Location = new System.Drawing.Point(47, 26);
+            this.SetBackupCheck.Name = "SetBackupCheck";
+            this.SetBackupCheck.Size = new System.Drawing.Size(205, 24);
+            this.SetBackupCheck.TabIndex = 8;
+            this.SetBackupCheck.Text = "Backup-Pfad einrichten";
+            this.SetBackupCheck.UseVisualStyleBackColor = true;
+            // 
+            // BackupBasePathBox
+            // 
+            this.BackupBasePathBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::WindowsFormsApp1.Properties.Settings.Default, "TempBackupPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.BackupBasePathBox.Location = new System.Drawing.Point(206, 56);
+            this.BackupBasePathBox.Name = "BackupBasePathBox";
+            this.BackupBasePathBox.Size = new System.Drawing.Size(323, 27);
+            this.BackupBasePathBox.TabIndex = 9;
+            this.BackupBasePathBox.Text = global::WindowsFormsApp1.Properties.Settings.Default.TempBackupPath;
             // 
             // StartLynxCheck
             // 
             this.StartLynxCheck.AutoSize = true;
             this.StartLynxCheck.Checked = global::WindowsFormsApp1.Properties.Settings.Default.TempStartLynx;
             this.StartLynxCheck.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::WindowsFormsApp1.Properties.Settings.Default, "TempStartLynx", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.StartLynxCheck.Location = new System.Drawing.Point(12, 357);
+            this.StartLynxCheck.Location = new System.Drawing.Point(12, 468);
             this.StartLynxCheck.Name = "StartLynxCheck";
-            this.StartLynxCheck.Size = new System.Drawing.Size(230, 21);
+            this.StartLynxCheck.Size = new System.Drawing.Size(272, 24);
             this.StartLynxCheck.TabIndex = 12;
             this.StartLynxCheck.Text = "Lynx nach Eventauswahl starten";
             this.StartLynxCheck.UseVisualStyleBackColor = true;
@@ -265,11 +314,10 @@
             // 
             this.ChangeSeltecSettingsBox.AutoSize = true;
             this.ChangeSeltecSettingsBox.Checked = global::WindowsFormsApp1.Properties.Settings.Default.TempSetLynxSettings;
-            this.ChangeSeltecSettingsBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ChangeSeltecSettingsBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::WindowsFormsApp1.Properties.Settings.Default, "TempSetLynxSettings", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ChangeSeltecSettingsBox.Location = new System.Drawing.Point(12, 327);
+            this.ChangeSeltecSettingsBox.Location = new System.Drawing.Point(12, 438);
             this.ChangeSeltecSettingsBox.Name = "ChangeSeltecSettingsBox";
-            this.ChangeSeltecSettingsBox.Size = new System.Drawing.Size(456, 21);
+            this.ChangeSeltecSettingsBox.Size = new System.Drawing.Size(542, 24);
             this.ChangeSeltecSettingsBox.TabIndex = 11;
             this.ChangeSeltecSettingsBox.Text = "Lynx-Einstellungen anpassen (Hinweis: Erfordert Neustart von Lynx)";
             this.ChangeSeltecSettingsBox.ThreeState = true;
@@ -280,7 +328,7 @@
             this.BasePathBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::WindowsFormsApp1.Properties.Settings.Default, "TempEventBasePath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.BasePathBox.Location = new System.Drawing.Point(206, 26);
             this.BasePathBox.Name = "BasePathBox";
-            this.BasePathBox.Size = new System.Drawing.Size(323, 23);
+            this.BasePathBox.Size = new System.Drawing.Size(323, 27);
             this.BasePathBox.TabIndex = 1;
             this.BasePathBox.Text = global::WindowsFormsApp1.Properties.Settings.Default.TempEventBasePath;
             this.BasePathBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -290,7 +338,7 @@
             this.TemplatePathBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::WindowsFormsApp1.Properties.Settings.Default, "TempEventPathTemplate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.TemplatePathBox.Location = new System.Drawing.Point(206, 66);
             this.TemplatePathBox.Name = "TemplatePathBox";
-            this.TemplatePathBox.Size = new System.Drawing.Size(323, 23);
+            this.TemplatePathBox.Size = new System.Drawing.Size(323, 27);
             this.TemplatePathBox.TabIndex = 3;
             this.TemplatePathBox.Text = global::WindowsFormsApp1.Properties.Settings.Default.TempEventPathTemplate;
             this.TemplatePathBox.TextChanged += new System.EventHandler(this.TemplatePathBox_TextChanged);
@@ -300,7 +348,7 @@
             this.SeltecPathBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::WindowsFormsApp1.Properties.Settings.Default, "TempSeltecPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.SeltecPathBox.Location = new System.Drawing.Point(206, 26);
             this.SeltecPathBox.Name = "SeltecPathBox";
-            this.SeltecPathBox.Size = new System.Drawing.Size(323, 23);
+            this.SeltecPathBox.Size = new System.Drawing.Size(323, 27);
             this.SeltecPathBox.TabIndex = 5;
             this.SeltecPathBox.Text = global::WindowsFormsApp1.Properties.Settings.Default.TempSeltecPath;
             this.SeltecPathBox.TextChanged += new System.EventHandler(this.TestTextBox_TextChanged);
@@ -313,35 +361,50 @@
             this.ShowSeltecRacesBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::WindowsFormsApp1.Properties.Settings.Default, "TempActivateSeltecRead", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ShowSeltecRacesBox.Location = new System.Drawing.Point(47, 59);
             this.ShowSeltecRacesBox.Name = "ShowSeltecRacesBox";
-            this.ShowSeltecRacesBox.Size = new System.Drawing.Size(301, 21);
+            this.ShowSeltecRacesBox.Size = new System.Drawing.Size(351, 24);
             this.ShowSeltecRacesBox.TabIndex = 7;
             this.ShowSeltecRacesBox.Text = "Seltec-Laufvorlagen einlesen und anzeigen";
             this.ShowSeltecRacesBox.UseVisualStyleBackColor = true;
+            // 
+            // ChangeResultPathCheck
+            // 
+            this.ChangeResultPathCheck.AutoSize = true;
+            this.ChangeResultPathCheck.Checked = global::WindowsFormsApp1.Properties.Settings.Default.TempChangeResultPath;
+            this.ChangeResultPathCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ChangeResultPathCheck.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::WindowsFormsApp1.Properties.Settings.Default, "TempChangeResultPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ChangeResultPathCheck.Location = new System.Drawing.Point(47, 26);
+            this.ChangeResultPathCheck.Name = "ChangeResultPathCheck";
+            this.ChangeResultPathCheck.Size = new System.Drawing.Size(390, 24);
+            this.ChangeResultPathCheck.TabIndex = 8;
+            this.ChangeResultPathCheck.Text = "Ergebnisse unter einem anderen Pfad speichern";
+            this.ChangeResultPathCheck.UseVisualStyleBackColor = true;
+            this.ChangeResultPathCheck.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // ResultPathBox
             // 
             this.ResultPathBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::WindowsFormsApp1.Properties.Settings.Default, "TempResultPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ResultPathBox.Location = new System.Drawing.Point(206, 56);
             this.ResultPathBox.Name = "ResultPathBox";
-            this.ResultPathBox.Size = new System.Drawing.Size(323, 23);
+            this.ResultPathBox.Size = new System.Drawing.Size(323, 27);
             this.ResultPathBox.TabIndex = 9;
             this.ResultPathBox.Text = global::WindowsFormsApp1.Properties.Settings.Default.TempResultPath;
             // 
             // OptionsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(713, 471);
+            this.ClientSize = new System.Drawing.Size(713, 596);
+            this.Controls.Add(this.BackupGroup);
             this.Controls.Add(this.LynxVersionBox);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.FoundLynxVersion);
             this.Controls.Add(this.StartLynxCheck);
             this.Controls.Add(this.ChangeSeltecSettingsBox);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.EventFolderGroup);
+            this.Controls.Add(this.SeltecGroup);
+            this.Controls.Add(this.ResultGroup);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -350,13 +413,15 @@
             this.Name = "OptionsView";
             this.Text = "Optionen";
             this.Load += new System.EventHandler(this.OptionsView_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.EventFolderGroup.ResumeLayout(false);
+            this.EventFolderGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InvalidTemplateSign)).EndInit();
+            this.SeltecGroup.ResumeLayout(false);
+            this.SeltecGroup.PerformLayout();
+            this.ResultGroup.ResumeLayout(false);
+            this.ResultGroup.PerformLayout();
+            this.BackupGroup.ResumeLayout(false);
+            this.BackupGroup.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -382,11 +447,16 @@
         private System.Windows.Forms.Label FoundLynxVersion;
         private System.Windows.Forms.Button OkButton;
         private System.Windows.Forms.Button CancelButton;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox EventFolderGroup;
+        private System.Windows.Forms.GroupBox SeltecGroup;
+        private System.Windows.Forms.GroupBox ResultGroup;
         private System.Windows.Forms.ComboBox LynxVersionBox;
         private System.Windows.Forms.PictureBox InvalidTemplateSign;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip TTOptions;
+        private System.Windows.Forms.GroupBox BackupGroup;
+        private System.Windows.Forms.Label BackupPath;
+        private System.Windows.Forms.CheckBox SetBackupCheck;
+        private System.Windows.Forms.Button SelectBackupBasePathButton;
+        private System.Windows.Forms.TextBox BackupBasePathBox;
     }
 }

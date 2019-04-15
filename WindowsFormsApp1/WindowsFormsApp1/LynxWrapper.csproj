@@ -104,4 +104,7 @@
     <None Include="Resources\Download.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy C:\Users\beckj\Documents\LynxWrapper\WindowsFormsApp1\LynxWrapper_Namensvorlage.pdf $(TargetDir)</PostBuildEvent>
+  </PropertyGroup>
 </Project>
