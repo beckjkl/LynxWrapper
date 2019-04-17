@@ -21,11 +21,12 @@ namespace WindowsFormsApp1
 
         private void EventSelector_Load(object sender, EventArgs e)
         {
-
+            
             Settings.Default.Eventpath = Settings.Default.EventBasePath;
+            Settings.Default.EventName = "Unbekannt";
 
             Settings.Default.ExistingEventPath = "";
-            try
+            if(System.IO.Directory.Exists(Settings.Default.EventBasePath))
             {
                 var EventList = System.IO.Directory.GetDirectories(Settings.Default.EventBasePath);
                 foreach (var Event in EventList)
@@ -37,9 +38,14 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-            catch(ArgumentException ex)
-            {
 
+            string[] TempalteStrings = {"{Tag}", "{Monat}", "{Jahr}"};
+            string[] TemplateReplace =
+                {DateTime.Today.Day.ToString(), DateTime.Today.Month.ToString(), DateTime.Today.Year.ToString()};
+            Settings.Default.DateSetTemplate = Settings.Default.EventPathTemplate;
+            for (int i = 0; i < TempalteStrings.Count(); i++)
+            {
+                Settings.Default.DateSetTemplate = Settings.Default.DateSetTemplate.Replace(TempalteStrings[i], TemplateReplace[i]);
             }
         }
 
@@ -60,7 +66,7 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            Settings.Default.ExistingEventPath = BrowsePath.SelectedPath.ToString();
+            Settings.Default.ExistingEventPath = BrowsePath.SelectedPath;
         }
 
         private void BrowseBasePath_HelpRequest(object sender, EventArgs e)
@@ -75,32 +81,34 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            Settings.Default.Eventpath=BrowsePath.SelectedPath.ToString();
-            Settings.Default.FullEventPath = Path.Combine(Settings.Default.Eventpath, Settings.Default.EventName);
+            Settings.Default.Eventpath = BrowsePath.SelectedPath;
+            Settings.Default.FullEventPath = Path.Combine(Settings.Default.Eventpath, Settings.Default.DateSetTemplate.Replace("{Eventname}", EventNameBox.Text));
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            Settings.Default.EventName=EventNameBox.Text;
-            Settings.Default.FullEventPath = Path.Combine(Settings.Default.Eventpath, Settings.Default.EventName);
+            TextBox ChangedBox = (TextBox) sender;
+            Settings.Default.EventName = ChangedBox.Text;
+            Settings.Default.FullEventPath = Path.Combine(Settings.Default.Eventpath, Settings.Default.DateSetTemplate.Replace("{Eventname}", ChangedBox.Text));
         }
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            if (SelectNewEvent.Enabled)
+            if (SelectNewEvent.Checked)
             {
                 Settings.Default.ActiveEventPath = Settings.Default.FullEventPath;
 
                 try{ System.IO.Directory.CreateDirectory(Settings.Default.ActiveEventPath);} catch (ArgumentException ex) { }
             } 
-            if (SelectExistingEvent.Enabled)
+            if (SelectExistingEvent.Checked)
             {
                 Settings.Default.ActiveEventPath = Settings.Default.ExistingEventPath;
                 try { System.IO.Directory.CreateDirectory(Settings.Default.ActiveEventPath); }catch(ArgumentException ex) { }
             }
-            if (SelectNoEvent.Enabled)
+            if (SelectNoEvent.Checked)
             {
                 Settings.Default.ActiveEventPath = "";
+                this.Close();
             }
 
             if (Settings.Default.SetLynxSettings)
@@ -110,7 +118,7 @@ namespace WindowsFormsApp1
                
                 foreach(var UserSubKey in RegUser.GetSubKeyNames()){
                     try { var SubKey = RegUser.OpenSubKey(UserSubKey); } catch(System.Security.SecurityException ex) { continue; }
-                    LynxKey = RegUser.OpenSubKey(UserSubKey+ "\\Software\\Lynx System Developers, Inc.\\FinishLynx");
+                    LynxKey = RegUser.OpenSubKey(UserSubKey+ @"\Software\Lynx System Developers, Inc.\FinishLynx");
                     if (LynxKey != null) {
                         break;
                     }
@@ -121,7 +129,7 @@ namespace WindowsFormsApp1
                     return;
                 }
                 var LynxVersions = LynxKey.GetSubKeyNames();
-                String LynxPath = "";
+                string LynxPath = "";
                 foreach (var LynxVersion in LynxVersions)
                 {
                     if (!LynxVersion.Equals(Settings.Default.SelectedLynxVersion))
@@ -129,35 +137,75 @@ namespace WindowsFormsApp1
                         continue;
                     }
                     var VersionSubkey = LynxKey.OpenSubKey(LynxVersion);
-                    LynxPath = (String) VersionSubkey.GetValue("Install_Dir");
+                    LynxPath = (string) VersionSubkey.GetValue("Install_Dir");
                 }
                 var LynxSplit = LynxPath.Split('\\');
-                try { System.IO.File.Copy("%appdata%\\Local\\VirtualStore\\Program Files\\" + LynxSplit[LynxSplit.Count() - 1] + "\\Lynx.cfg", "%appdata%\\Local\\VirtualStore\\Program Files\\" + LynxSplit[LynxSplit.Count() - 1] + "\\Lynxbak.cfg"); }
+                string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    @"VirtualStore\Program Files", LynxSplit[LynxSplit.Count() - 1], @"Lynx.cfg");
+                try { System.IO.File.Copy(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"VirtualStore\Program Files", LynxSplit[LynxSplit.Count() - 1], @"Lynx.cfg"), Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"VirtualStore\Program Files", LynxSplit[LynxSplit.Count() - 1], @"Lynxbak.cfg"),true); }
                 catch (FileNotFoundException ex)
                 {
-                    MessageBox.Show("Lynx-Konfiguration konnte nicht gefunden Werden. Datei %appdata%\\Local\\VirtualStore\\Program Files\\" + LynxSplit[LynxSplit.Count() - 1] + "\\Lynx.cfg nicht gefunden", "Fehler: Lynx-Konfiguration nicht gefunden", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lynx-Konfiguration konnte nicht gefunden Werden. Datei "+ Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)+@"\VirtualStore\Program Files\" + LynxSplit[LynxSplit.Count() - 1] + @"\Lynx.cfg nicht gefunden", "Fehler: Lynx-Konfiguration nicht gefunden", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                var ReadConfig = File.ReadAllText("%appdata%\\Local\\VirtualStore\\Program Files\\" + LynxSplit[LynxSplit.Count() - 1] + "\\Lynx.cfg");
-                String[] ReplaceLines = new String[] 
+                var ReadConfig = File.ReadAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"VirtualStore\Program Files", LynxSplit[LynxSplit.Count() - 1], @"Lynx.cfg"));
+                string[] ReplaceLines = new string[] 
                 {
-                    "(\\\\Competition\\\\Name:String,1=)(.*)",
-                    "(\\\\Event\\\\Directory:String,1=)(.*)",
-                    "(\\\\Event\\\\BackupDir:String,1=)(.*)",
-                    "(\\\\Database\\\\File\\\\DataInDir:String,1=)(.*)",
-                    "(\\\\Database\\\\File\\\\DataOutDir:String,1=)(.*)"
+                    @"(\\Competition\\Name:String,1=)(.*)",
+                    @"(\\Event\\Directory:String,1=)(.*)",
+                    @"(\\Event\\BackupDir:String,1=)(.*)",
+                    @"(\\Database\\File\\DataInDir:String,1=)(.*)",
+                    @"(\\Database\\File\\DataOutDir:String,1=)(.*)"
                 };
-                String[] Replacements = new String[]
+                string[] Replacements = new string[]
                 {
                     "$1" + Settings.Default.EventName,
                     "$1" + Settings.Default.ActiveEventPath,
-                    "$1" + "$2", //Not yet Implemented in Settings
+                    "$1" + Settings.Default.BackupPath,
                     "$1" + Settings.Default.SeltecPath,
                     "$1" + Settings.Default.ResultPath
                 };
+
+                for (int i = 0; i < ReplaceLines.Count(); i++)
+                {
+                    ReadConfig = System.Text.RegularExpressions.Regex.Replace(ReadConfig, ReplaceLines[i], Replacements[i]);
+                }
+                File.WriteAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"VirtualStore\Program Files", LynxSplit[LynxSplit.Count() - 1], @"Lynx.cfg"), ReadConfig);
                 
-                
-                
+            }
+
+            if (Settings.Default.StartLynx)
+            {
+                var RegUser = Microsoft.Win32.Registry.Users;
+                Microsoft.Win32.RegistryKey LynxKey = null;
+
+                foreach (var UserSubKey in RegUser.GetSubKeyNames())
+                {
+                    try { var SubKey = RegUser.OpenSubKey(UserSubKey); } catch (System.Security.SecurityException ex) { continue; }
+                    LynxKey = RegUser.OpenSubKey(UserSubKey + @"\Software\Lynx System Developers, Inc.\FinishLynx");
+                    if (LynxKey != null)
+                    {
+                        break;
+                    }
+                }
+                if (LynxKey == null)
+                {
+                    MessageBox.Show("Lynx-Installation konnte nicht gefunden werden. Konfiguraton konnte nicht angepasst werden.", "Fehler: Lynx-Installation nicht gefunden", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                var LynxVersions = LynxKey.GetSubKeyNames();
+                string LynxPath = "";
+                foreach (var LynxVersion in LynxVersions)
+                {
+                    if (!LynxVersion.Equals(Settings.Default.SelectedLynxVersion))
+                    {
+                        continue;
+                    }
+                    var VersionSubkey = LynxKey.OpenSubKey(LynxVersion);
+                    LynxPath = (string)VersionSubkey.GetValue("Install_Dir");
+                }
+
+                System.Diagnostics.Process.Start(Path.Combine(LynxPath, "Lynx.exe"));
             }
 
             this.Close();
@@ -185,6 +233,18 @@ namespace WindowsFormsApp1
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void EventPathBox_TextChanged(object sender, EventArgs e)
+        {
+            TextBox ChangedObject = (TextBox) sender;
+            Settings.Default.Eventpath = ChangedObject.Text;
+            Settings.Default.FullEventPath = Path.Combine(Settings.Default.Eventpath, Settings.Default.DateSetTemplate.Replace("{Eventname}", EventNameBox.Text));
+        }
+
+        private void SelectedEventBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

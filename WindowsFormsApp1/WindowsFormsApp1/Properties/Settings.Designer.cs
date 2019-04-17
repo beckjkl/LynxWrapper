@@ -394,5 +394,17 @@ namespace WindowsFormsApp1.Properties {
                 this["TempBackupPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DateSetTemplate {
+            get {
+                return ((string)(this["DateSetTemplate"]));
+            }
+            set {
+                this["DateSetTemplate"] = value;
+            }
+        }
     }
 }

@@ -31,7 +31,6 @@
             this.TopLevelDesc = new System.Windows.Forms.Label();
             this.SelectNewEvent = new System.Windows.Forms.RadioButton();
             this.SelectExistingEvent = new System.Windows.Forms.RadioButton();
-            this.SelectNoEvent = new System.Windows.Forms.RadioButton();
             this.EventName = new System.Windows.Forms.Label();
             this.PathNewEvent = new System.Windows.Forms.Label();
             this.SelectNewEventPath = new System.Windows.Forms.Button();
@@ -45,6 +44,7 @@
             this.EventFullPathBox = new System.Windows.Forms.TextBox();
             this.SelectedEventBox = new System.Windows.Forms.TextBox();
             this.EventPathBox = new System.Windows.Forms.TextBox();
+            this.SelectNoEvent = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // TopLevelDesc
@@ -53,7 +53,7 @@
             this.TopLevelDesc.Location = new System.Drawing.Point(13, 9);
             this.TopLevelDesc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TopLevelDesc.Name = "TopLevelDesc";
-            this.TopLevelDesc.Size = new System.Drawing.Size(243, 17);
+            this.TopLevelDesc.Size = new System.Drawing.Size(288, 20);
             this.TopLevelDesc.TabIndex = 0;
             this.TopLevelDesc.Text = "Welches Event soll angezeigt werden";
             // 
@@ -62,7 +62,7 @@
             this.SelectNewEvent.AutoSize = true;
             this.SelectNewEvent.Location = new System.Drawing.Point(45, 32);
             this.SelectNewEvent.Name = "SelectNewEvent";
-            this.SelectNewEvent.Size = new System.Drawing.Size(162, 21);
+            this.SelectNewEvent.Size = new System.Drawing.Size(188, 24);
             this.SelectNewEvent.TabIndex = 1;
             this.SelectNewEvent.TabStop = true;
             this.SelectNewEvent.Text = "Neues Event anlegen";
@@ -74,33 +74,19 @@
             this.SelectExistingEvent.AutoSize = true;
             this.SelectExistingEvent.Location = new System.Drawing.Point(45, 173);
             this.SelectExistingEvent.Name = "SelectExistingEvent";
-            this.SelectExistingEvent.Size = new System.Drawing.Size(193, 21);
+            this.SelectExistingEvent.Size = new System.Drawing.Size(226, 24);
             this.SelectExistingEvent.TabIndex = 2;
             this.SelectExistingEvent.TabStop = true;
             this.SelectExistingEvent.Text = "Bestehendes Event öffnen";
             this.SelectExistingEvent.UseVisualStyleBackColor = true;
             this.SelectExistingEvent.CheckedChanged += new System.EventHandler(this.SelectExistingEvent_CheckedChanged);
             // 
-            // SelectNoEvent
-            // 
-            this.SelectNoEvent.AutoSize = true;
-            this.SelectNoEvent.Checked = global::WindowsFormsApp1.Properties.Settings.Default.SelectNoEvent;
-            this.SelectNoEvent.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::WindowsFormsApp1.Properties.Settings.Default, "SelectNoEvent", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.SelectNoEvent.Location = new System.Drawing.Point(45, 246);
-            this.SelectNoEvent.Name = "SelectNoEvent";
-            this.SelectNoEvent.Size = new System.Drawing.Size(133, 21);
-            this.SelectNoEvent.TabIndex = 3;
-            this.SelectNoEvent.TabStop = true;
-            this.SelectNoEvent.Text = "Kein Event laden";
-            this.SelectNoEvent.UseVisualStyleBackColor = true;
-            this.SelectNoEvent.CheckedChanged += new System.EventHandler(this.SelectNoEvent_CheckedChanged);
-            // 
             // EventName
             // 
             this.EventName.AutoSize = true;
             this.EventName.Location = new System.Drawing.Point(101, 65);
             this.EventName.Name = "EventName";
-            this.EventName.Size = new System.Drawing.Size(79, 17);
+            this.EventName.Size = new System.Drawing.Size(92, 20);
             this.EventName.TabIndex = 5;
             this.EventName.Text = "Eventname";
             // 
@@ -109,7 +95,7 @@
             this.PathNewEvent.AutoSize = true;
             this.PathNewEvent.Location = new System.Drawing.Point(101, 98);
             this.PathNewEvent.Name = "PathNewEvent";
-            this.PathNewEvent.Size = new System.Drawing.Size(70, 17);
+            this.PathNewEvent.Size = new System.Drawing.Size(84, 20);
             this.PathNewEvent.TabIndex = 6;
             this.PathNewEvent.Text = "Basispfad";
             // 
@@ -152,7 +138,7 @@
             this.PathOpenEvent.AutoSize = true;
             this.PathOpenEvent.Location = new System.Drawing.Point(101, 206);
             this.PathOpenEvent.Name = "PathOpenEvent";
-            this.PathOpenEvent.Size = new System.Drawing.Size(37, 17);
+            this.PathOpenEvent.Size = new System.Drawing.Size(43, 20);
             this.PathOpenEvent.TabIndex = 11;
             this.PathOpenEvent.Text = "Pfad";
             // 
@@ -177,7 +163,7 @@
             this.EventNameBox.Enabled = false;
             this.EventNameBox.Location = new System.Drawing.Point(232, 62);
             this.EventNameBox.Name = "EventNameBox";
-            this.EventNameBox.Size = new System.Drawing.Size(323, 23);
+            this.EventNameBox.Size = new System.Drawing.Size(323, 27);
             this.EventNameBox.TabIndex = 4;
             this.EventNameBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -186,7 +172,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(101, 131);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 17);
+            this.label1.Size = new System.Drawing.Size(92, 20);
             this.label1.TabIndex = 14;
             this.label1.Text = "Ablagepfad";
             // 
@@ -197,7 +183,7 @@
             this.EventFullPathBox.Location = new System.Drawing.Point(232, 128);
             this.EventFullPathBox.Name = "EventFullPathBox";
             this.EventFullPathBox.ReadOnly = true;
-            this.EventFullPathBox.Size = new System.Drawing.Size(323, 23);
+            this.EventFullPathBox.Size = new System.Drawing.Size(323, 27);
             this.EventFullPathBox.TabIndex = 15;
             this.EventFullPathBox.Text = global::WindowsFormsApp1.Properties.Settings.Default.FullEventPath;
             // 
@@ -207,9 +193,10 @@
             this.SelectedEventBox.Enabled = false;
             this.SelectedEventBox.Location = new System.Drawing.Point(232, 203);
             this.SelectedEventBox.Name = "SelectedEventBox";
-            this.SelectedEventBox.Size = new System.Drawing.Size(323, 23);
+            this.SelectedEventBox.Size = new System.Drawing.Size(323, 27);
             this.SelectedEventBox.TabIndex = 12;
             this.SelectedEventBox.Text = global::WindowsFormsApp1.Properties.Settings.Default.ExistingEventPath;
+            this.SelectedEventBox.TextChanged += new System.EventHandler(this.SelectedEventBox_TextChanged);
             // 
             // EventPathBox
             // 
@@ -217,13 +204,28 @@
             this.EventPathBox.Enabled = false;
             this.EventPathBox.Location = new System.Drawing.Point(232, 95);
             this.EventPathBox.Name = "EventPathBox";
-            this.EventPathBox.Size = new System.Drawing.Size(323, 23);
+            this.EventPathBox.Size = new System.Drawing.Size(323, 27);
             this.EventPathBox.TabIndex = 7;
             this.EventPathBox.Text = global::WindowsFormsApp1.Properties.Settings.Default.Eventpath;
+            this.EventPathBox.TextChanged += new System.EventHandler(this.EventPathBox_TextChanged);
+            // 
+            // SelectNoEvent
+            // 
+            this.SelectNoEvent.AutoSize = true;
+            this.SelectNoEvent.Checked = global::WindowsFormsApp1.Properties.Settings.Default.SelectNoEvent;
+            this.SelectNoEvent.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::WindowsFormsApp1.Properties.Settings.Default, "SelectNoEvent", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.SelectNoEvent.Location = new System.Drawing.Point(45, 246);
+            this.SelectNoEvent.Name = "SelectNoEvent";
+            this.SelectNoEvent.Size = new System.Drawing.Size(155, 24);
+            this.SelectNoEvent.TabIndex = 3;
+            this.SelectNoEvent.TabStop = true;
+            this.SelectNoEvent.Text = "Kein Event laden";
+            this.SelectNoEvent.UseVisualStyleBackColor = true;
+            this.SelectNoEvent.CheckedChanged += new System.EventHandler(this.SelectNoEvent_CheckedChanged);
             // 
             // EventSelector
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(729, 341);

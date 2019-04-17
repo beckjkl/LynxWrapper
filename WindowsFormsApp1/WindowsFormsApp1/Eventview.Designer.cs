@@ -43,7 +43,9 @@
             this.TTEventview = new System.Windows.Forms.ToolTip(this.components);
             this.EventWatcher = new System.IO.FileSystemWatcher();
             this.PlanedRaceCheck = new System.Windows.Forms.CheckBox();
+            this.Resultwatcher = new System.IO.FileSystemWatcher();
             ((System.ComponentModel.ISupportInitialize)(this.EventWatcher)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Resultwatcher)).BeginInit();
             this.SuspendLayout();
             // 
             // RaceListView
@@ -143,7 +145,7 @@
             // 
             this.EventWatcher.EnableRaisingEvents = true;
             this.EventWatcher.Filter = global::WindowsFormsApp1.Properties.Settings.Default.EventComponents;
-            this.EventWatcher.Path = global::WindowsFormsApp1.Properties.Settings.Default.Eventpath;
+            this.EventWatcher.Path = global::WindowsFormsApp1.Properties.Settings.Default.ActiveEventPath;
             this.EventWatcher.SynchronizingObject = this;
             this.EventWatcher.Changed += new System.IO.FileSystemEventHandler(this.EventWatcher_Changed);
             // 
@@ -153,6 +155,14 @@
             this.PlanedRaceCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.PlanedRaceCheck.Name = "PlanedRaceCheck";
             this.PlanedRaceCheck.UseVisualStyleBackColor = false;
+            // 
+            // Resultwatcher
+            // 
+            this.Resultwatcher.EnableRaisingEvents = true;
+            this.Resultwatcher.Filter = "*.lif";
+            this.Resultwatcher.Path = global::WindowsFormsApp1.Properties.Settings.Default.ResultPath;
+            this.Resultwatcher.SynchronizingObject = this;
+            this.Resultwatcher.Changed += new System.IO.FileSystemEventHandler(this.Resultwatcher_Changed);
             // 
             // LynxWrapper
             // 
@@ -170,6 +180,7 @@
             this.Name = "LynxWrapper";
             this.Load += new System.EventHandler(this.LynxWrapper_Load);
             ((System.ComponentModel.ISupportInitialize)(this.EventWatcher)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Resultwatcher)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -189,6 +200,7 @@
         private System.Windows.Forms.ColumnHeader LastModified;
         private System.IO.FileSystemWatcher EventWatcher;
         private System.Windows.Forms.CheckBox PlanedRaceCheck;
+        private System.IO.FileSystemWatcher Resultwatcher;
     }
 }
 

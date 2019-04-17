@@ -83,7 +83,7 @@ namespace WindowsFormsApp1
             foreach (var UserSubKey in RegUser.GetSubKeyNames())
             {
                 try { var SubKey = RegUser.OpenSubKey(UserSubKey); } catch (System.Security.SecurityException ex) { continue; }
-                LynxKey = RegUser.OpenSubKey(UserSubKey + "\\Software\\Lynx System Developers, Inc.\\FinishLynx");
+                LynxKey = RegUser.OpenSubKey(UserSubKey + @"\Software\Lynx System Developers, Inc.\FinishLynx");
                 if (LynxKey != null)
                 {
                     break;
@@ -132,7 +132,7 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            if (!System.IO.Path.IsPathRooted(Settings.Default.TempBackupPath))
+            if (!System.IO.Path.IsPathRooted(Settings.Default.TempBackupPath) && Settings.Default.SetBackupPath)
             {
                 MessageBox.Show("Backup-Basisordner ist kein valider Pfad. Bitte korrigieren", "Fehler: Invalide Backup-Basisordner", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -161,6 +161,11 @@ namespace WindowsFormsApp1
             Settings.Default.SetLynxSettings = Settings.Default.TempSetLynxSettings;
             Settings.Default.StartLynx = Settings.Default.TempStartLynx;
 
+            if (!Settings.Default.SetBackupPath)
+            {
+                Settings.Default.BackupPath = Settings.Default.EventBasePath;
+            }
+
             this.Close();
         }
 
@@ -172,10 +177,9 @@ namespace WindowsFormsApp1
         private void TemplatePathBox_TextChanged(object sender, EventArgs e)
         {
             TextBox senderbox = (TextBox)sender;
-            String TempalteRegex = "^(((\\w|\\s)+|(\\{(Jahr|Tag|Monat|Eventname)\\}))+\\\\?)+$";
+            string TempalteRegex = @"^(((\w|\s)+|(\{(Jahr|Tag|Monat|Eventname)\}))+\\?)+$";
             Settings.Default.TempIsValidnameTemplate = System.Text.RegularExpressions.Regex.IsMatch(senderbox.Text, TempalteRegex);
             InvalidTemplateSign.Visible = !Settings.Default.TempIsValidnameTemplate;
-            InvalidTemplateSign.Refresh();
         }
 
         private void SelectSeltecPathButton_Click(object sender, EventArgs e)
@@ -185,7 +189,7 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            Settings.Default.TempSeltecPath = BrowsePath.SelectedPath.ToString();
+            Settings.Default.TempSeltecPath = BrowsePath.SelectedPath;
         }
 
         private void SelectResultPathButton_Click(object sender, EventArgs e)
@@ -195,7 +199,7 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            Settings.Default.TempResultPath = BrowsePath.SelectedPath.ToString();
+            Settings.Default.TempResultPath = BrowsePath.SelectedPath;
         }
 
         private void SelectBackupBasePathButton_Click(object sender, EventArgs e)
@@ -205,7 +209,12 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            Settings.Default.TempBackupPath = BrowsePath.SelectedPath.ToString();
+            Settings.Default.TempBackupPath = BrowsePath.SelectedPath;
+        }
+
+        private void templatePathExplanationButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("LynxWrapper_Namensvorlage.pdf");
         }
     }
 }

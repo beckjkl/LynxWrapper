@@ -47,8 +47,8 @@
             this.LynxVersionBox = new System.Windows.Forms.ComboBox();
             this.TTOptions = new System.Windows.Forms.ToolTip(this.components);
             this.BackupGroup = new System.Windows.Forms.GroupBox();
-            this.SelectBackupBasePathButton = new System.Windows.Forms.Button();
             this.BackupPath = new System.Windows.Forms.Label();
+            this.SelectBackupBasePathButton = new System.Windows.Forms.Button();
             this.SetBackupCheck = new System.Windows.Forms.CheckBox();
             this.BackupBasePathBox = new System.Windows.Forms.TextBox();
             this.StartLynxCheck = new System.Windows.Forms.CheckBox();
@@ -73,7 +73,7 @@
             this.BasePath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.BasePath.Name = "BasePath";
             this.BasePath.Size = new System.Drawing.Size(100, 20);
-            this.BasePath.TabIndex = 1;
+            this.BasePath.TabIndex = 0;
             this.BasePath.Text = "Basisordner";
             // 
             // SelectBasePathButton
@@ -82,7 +82,7 @@
             this.SelectBasePathButton.Location = new System.Drawing.Point(552, 22);
             this.SelectBasePathButton.Name = "SelectBasePathButton";
             this.SelectBasePathButton.Size = new System.Drawing.Size(127, 34);
-            this.SelectBasePathButton.TabIndex = 2;
+            this.SelectBasePathButton.TabIndex = 1;
             this.SelectBasePathButton.Text = "Auswählen";
             this.SelectBasePathButton.UseVisualStyleBackColor = false;
             this.SelectBasePathButton.Click += new System.EventHandler(this.SelectBasePath_Click);
@@ -102,9 +102,10 @@
             this.templatePathExplanationButton.Location = new System.Drawing.Point(552, 62);
             this.templatePathExplanationButton.Name = "templatePathExplanationButton";
             this.templatePathExplanationButton.Size = new System.Drawing.Size(127, 34);
-            this.templatePathExplanationButton.TabIndex = 4;
+            this.templatePathExplanationButton.TabIndex = 3;
             this.templatePathExplanationButton.Text = "Erklärung";
             this.templatePathExplanationButton.UseVisualStyleBackColor = false;
+            this.templatePathExplanationButton.Click += new System.EventHandler(this.templatePathExplanationButton_Click);
             // 
             // label1
             // 
@@ -121,7 +122,7 @@
             this.SelectSeltecPathButton.Location = new System.Drawing.Point(552, 22);
             this.SelectSeltecPathButton.Name = "SelectSeltecPathButton";
             this.SelectSeltecPathButton.Size = new System.Drawing.Size(127, 34);
-            this.SelectSeltecPathButton.TabIndex = 6;
+            this.SelectSeltecPathButton.TabIndex = 1;
             this.SelectSeltecPathButton.Text = "Auswählen";
             this.SelectSeltecPathButton.UseVisualStyleBackColor = false;
             this.SelectSeltecPathButton.Click += new System.EventHandler(this.SelectSeltecPathButton_Click);
@@ -132,7 +133,7 @@
             this.SelectResultPathButton.Location = new System.Drawing.Point(552, 52);
             this.SelectResultPathButton.Name = "SelectResultPathButton";
             this.SelectResultPathButton.Size = new System.Drawing.Size(127, 34);
-            this.SelectResultPathButton.TabIndex = 10;
+            this.SelectResultPathButton.TabIndex = 2;
             this.SelectResultPathButton.Text = "Auswählen";
             this.SelectResultPathButton.UseVisualStyleBackColor = false;
             this.SelectResultPathButton.Click += new System.EventHandler(this.SelectResultPathButton_Click);
@@ -143,7 +144,7 @@
             this.FoundLynxVersion.Location = new System.Drawing.Point(12, 495);
             this.FoundLynxVersion.Name = "FoundLynxVersion";
             this.FoundLynxVersion.Size = new System.Drawing.Size(111, 20);
-            this.FoundLynxVersion.TabIndex = 18;
+            this.FoundLynxVersion.TabIndex = 7;
             this.FoundLynxVersion.Text = "Lynx Version:";
             // 
             // OkButton
@@ -153,7 +154,7 @@
             this.OkButton.Location = new System.Drawing.Point(413, 541);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(128, 34);
-            this.OkButton.TabIndex = 14;
+            this.OkButton.TabIndex = 9;
             this.OkButton.Text = "Ok";
             this.OkButton.UseVisualStyleBackColor = false;
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
@@ -165,7 +166,7 @@
             this.CancelButton.Location = new System.Drawing.Point(564, 541);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(128, 34);
-            this.CancelButton.TabIndex = 15;
+            this.CancelButton.TabIndex = 0;
             this.CancelButton.Text = "Abbrechen";
             this.CancelButton.UseVisualStyleBackColor = false;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
@@ -185,7 +186,7 @@
             this.EventFolderGroup.Location = new System.Drawing.Point(12, 12);
             this.EventFolderGroup.Name = "EventFolderGroup";
             this.EventFolderGroup.Size = new System.Drawing.Size(687, 103);
-            this.EventFolderGroup.TabIndex = 23;
+            this.EventFolderGroup.TabIndex = 1;
             this.EventFolderGroup.TabStop = false;
             this.EventFolderGroup.Text = "Ordnerstruktur für Events";
             this.EventFolderGroup.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -214,7 +215,7 @@
             this.SeltecGroup.Location = new System.Drawing.Point(12, 121);
             this.SeltecGroup.Name = "SeltecGroup";
             this.SeltecGroup.Size = new System.Drawing.Size(687, 89);
-            this.SeltecGroup.TabIndex = 7;
+            this.SeltecGroup.TabIndex = 2;
             this.SeltecGroup.TabStop = false;
             this.SeltecGroup.Text = "Seltec-Laufvorlagen";
             // 
@@ -228,7 +229,7 @@
             this.ResultGroup.Location = new System.Drawing.Point(12, 216);
             this.ResultGroup.Name = "ResultGroup";
             this.ResultGroup.Size = new System.Drawing.Size(687, 105);
-            this.ResultGroup.TabIndex = 24;
+            this.ResultGroup.TabIndex = 3;
             this.ResultGroup.TabStop = false;
             this.ResultGroup.Text = "Ergebnisse (.lif)";
             // 
@@ -239,7 +240,7 @@
             this.LynxVersionBox.Location = new System.Drawing.Point(218, 498);
             this.LynxVersionBox.Name = "LynxVersionBox";
             this.LynxVersionBox.Size = new System.Drawing.Size(323, 28);
-            this.LynxVersionBox.TabIndex = 13;
+            this.LynxVersionBox.TabIndex = 8;
             // 
             // BackupGroup
             // 
@@ -252,20 +253,9 @@
             this.BackupGroup.Location = new System.Drawing.Point(12, 327);
             this.BackupGroup.Name = "BackupGroup";
             this.BackupGroup.Size = new System.Drawing.Size(687, 105);
-            this.BackupGroup.TabIndex = 25;
+            this.BackupGroup.TabIndex = 4;
             this.BackupGroup.TabStop = false;
             this.BackupGroup.Text = "Backup";
-            // 
-            // SelectBackupBasePathButton
-            // 
-            this.SelectBackupBasePathButton.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.SelectBackupBasePathButton.Location = new System.Drawing.Point(552, 52);
-            this.SelectBackupBasePathButton.Name = "SelectBackupBasePathButton";
-            this.SelectBackupBasePathButton.Size = new System.Drawing.Size(127, 34);
-            this.SelectBackupBasePathButton.TabIndex = 10;
-            this.SelectBackupBasePathButton.Text = "Auswählen";
-            this.SelectBackupBasePathButton.UseVisualStyleBackColor = false;
-            this.SelectBackupBasePathButton.Click += new System.EventHandler(this.SelectBackupBasePathButton_Click);
             // 
             // BackupPath
             // 
@@ -277,6 +267,17 @@
             this.BackupPath.TabIndex = 8;
             this.BackupPath.Text = "Backup-Basisordner";
             // 
+            // SelectBackupBasePathButton
+            // 
+            this.SelectBackupBasePathButton.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.SelectBackupBasePathButton.Location = new System.Drawing.Point(552, 52);
+            this.SelectBackupBasePathButton.Name = "SelectBackupBasePathButton";
+            this.SelectBackupBasePathButton.Size = new System.Drawing.Size(127, 34);
+            this.SelectBackupBasePathButton.TabIndex = 2;
+            this.SelectBackupBasePathButton.Text = "Auswählen";
+            this.SelectBackupBasePathButton.UseVisualStyleBackColor = false;
+            this.SelectBackupBasePathButton.Click += new System.EventHandler(this.SelectBackupBasePathButton_Click);
+            // 
             // SetBackupCheck
             // 
             this.SetBackupCheck.AutoSize = true;
@@ -285,7 +286,7 @@
             this.SetBackupCheck.Location = new System.Drawing.Point(47, 26);
             this.SetBackupCheck.Name = "SetBackupCheck";
             this.SetBackupCheck.Size = new System.Drawing.Size(205, 24);
-            this.SetBackupCheck.TabIndex = 8;
+            this.SetBackupCheck.TabIndex = 0;
             this.SetBackupCheck.Text = "Backup-Pfad einrichten";
             this.SetBackupCheck.UseVisualStyleBackColor = true;
             // 
@@ -295,7 +296,7 @@
             this.BackupBasePathBox.Location = new System.Drawing.Point(206, 56);
             this.BackupBasePathBox.Name = "BackupBasePathBox";
             this.BackupBasePathBox.Size = new System.Drawing.Size(323, 27);
-            this.BackupBasePathBox.TabIndex = 9;
+            this.BackupBasePathBox.TabIndex = 1;
             this.BackupBasePathBox.Text = global::WindowsFormsApp1.Properties.Settings.Default.TempBackupPath;
             // 
             // StartLynxCheck
@@ -306,7 +307,7 @@
             this.StartLynxCheck.Location = new System.Drawing.Point(12, 468);
             this.StartLynxCheck.Name = "StartLynxCheck";
             this.StartLynxCheck.Size = new System.Drawing.Size(272, 24);
-            this.StartLynxCheck.TabIndex = 12;
+            this.StartLynxCheck.TabIndex = 6;
             this.StartLynxCheck.Text = "Lynx nach Eventauswahl starten";
             this.StartLynxCheck.UseVisualStyleBackColor = true;
             // 
@@ -314,11 +315,12 @@
             // 
             this.ChangeSeltecSettingsBox.AutoSize = true;
             this.ChangeSeltecSettingsBox.Checked = global::WindowsFormsApp1.Properties.Settings.Default.TempSetLynxSettings;
+            this.ChangeSeltecSettingsBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ChangeSeltecSettingsBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::WindowsFormsApp1.Properties.Settings.Default, "TempSetLynxSettings", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ChangeSeltecSettingsBox.Location = new System.Drawing.Point(12, 438);
             this.ChangeSeltecSettingsBox.Name = "ChangeSeltecSettingsBox";
             this.ChangeSeltecSettingsBox.Size = new System.Drawing.Size(542, 24);
-            this.ChangeSeltecSettingsBox.TabIndex = 11;
+            this.ChangeSeltecSettingsBox.TabIndex = 5;
             this.ChangeSeltecSettingsBox.Text = "Lynx-Einstellungen anpassen (Hinweis: Erfordert Neustart von Lynx)";
             this.ChangeSeltecSettingsBox.ThreeState = true;
             this.ChangeSeltecSettingsBox.UseVisualStyleBackColor = true;
@@ -329,7 +331,7 @@
             this.BasePathBox.Location = new System.Drawing.Point(206, 26);
             this.BasePathBox.Name = "BasePathBox";
             this.BasePathBox.Size = new System.Drawing.Size(323, 27);
-            this.BasePathBox.TabIndex = 1;
+            this.BasePathBox.TabIndex = 0;
             this.BasePathBox.Text = global::WindowsFormsApp1.Properties.Settings.Default.TempEventBasePath;
             this.BasePathBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -339,7 +341,7 @@
             this.TemplatePathBox.Location = new System.Drawing.Point(206, 66);
             this.TemplatePathBox.Name = "TemplatePathBox";
             this.TemplatePathBox.Size = new System.Drawing.Size(323, 27);
-            this.TemplatePathBox.TabIndex = 3;
+            this.TemplatePathBox.TabIndex = 2;
             this.TemplatePathBox.Text = global::WindowsFormsApp1.Properties.Settings.Default.TempEventPathTemplate;
             this.TemplatePathBox.TextChanged += new System.EventHandler(this.TemplatePathBox_TextChanged);
             // 
@@ -349,7 +351,7 @@
             this.SeltecPathBox.Location = new System.Drawing.Point(206, 26);
             this.SeltecPathBox.Name = "SeltecPathBox";
             this.SeltecPathBox.Size = new System.Drawing.Size(323, 27);
-            this.SeltecPathBox.TabIndex = 5;
+            this.SeltecPathBox.TabIndex = 0;
             this.SeltecPathBox.Text = global::WindowsFormsApp1.Properties.Settings.Default.TempSeltecPath;
             this.SeltecPathBox.TextChanged += new System.EventHandler(this.TestTextBox_TextChanged);
             // 
@@ -375,7 +377,7 @@
             this.ChangeResultPathCheck.Location = new System.Drawing.Point(47, 26);
             this.ChangeResultPathCheck.Name = "ChangeResultPathCheck";
             this.ChangeResultPathCheck.Size = new System.Drawing.Size(390, 24);
-            this.ChangeResultPathCheck.TabIndex = 8;
+            this.ChangeResultPathCheck.TabIndex = 0;
             this.ChangeResultPathCheck.Text = "Ergebnisse unter einem anderen Pfad speichern";
             this.ChangeResultPathCheck.UseVisualStyleBackColor = true;
             this.ChangeResultPathCheck.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -386,7 +388,7 @@
             this.ResultPathBox.Location = new System.Drawing.Point(206, 56);
             this.ResultPathBox.Name = "ResultPathBox";
             this.ResultPathBox.Size = new System.Drawing.Size(323, 27);
-            this.ResultPathBox.TabIndex = 9;
+            this.ResultPathBox.TabIndex = 1;
             this.ResultPathBox.Text = global::WindowsFormsApp1.Properties.Settings.Default.TempResultPath;
             // 
             // OptionsView
@@ -411,7 +413,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OptionsView";
-            this.Text = "Optionen";
             this.Load += new System.EventHandler(this.OptionsView_Load);
             this.EventFolderGroup.ResumeLayout(false);
             this.EventFolderGroup.PerformLayout();
