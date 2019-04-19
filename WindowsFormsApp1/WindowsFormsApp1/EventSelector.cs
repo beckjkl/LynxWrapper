@@ -24,8 +24,9 @@ namespace WindowsFormsApp1
             
             Settings.Default.Eventpath = Settings.Default.EventBasePath;
             Settings.Default.EventName = "Unbekannt";
-
             Settings.Default.ExistingEventPath = "";
+            Settings.Default.ExistingEventName = "";
+
             if(System.IO.Directory.Exists(Settings.Default.EventBasePath))
             {
                 var EventList = System.IO.Directory.GetDirectories(Settings.Default.EventBasePath);
@@ -39,13 +40,13 @@ namespace WindowsFormsApp1
                 }
             }
 
-            string[] TempalteStrings = {"{Tag}", "{Monat}", "{Jahr}"};
+            string[] TemplateStrings = {"{Tag}", "{Monat}", "{Jahr}"};
             string[] TemplateReplace =
                 {DateTime.Today.Day.ToString(), DateTime.Today.Month.ToString(), DateTime.Today.Year.ToString()};
             Settings.Default.DateSetTemplate = Settings.Default.EventPathTemplate;
-            for (int i = 0; i < TempalteStrings.Count(); i++)
+            for (int i = 0; i < TemplateStrings.Count(); i++)
             {
-                Settings.Default.DateSetTemplate = Settings.Default.DateSetTemplate.Replace(TempalteStrings[i], TemplateReplace[i]);
+                Settings.Default.DateSetTemplate = Settings.Default.DateSetTemplate.Replace(TemplateStrings[i], TemplateReplace[i]);
             }
         }
 
@@ -83,6 +84,12 @@ namespace WindowsFormsApp1
 
             Settings.Default.Eventpath = BrowsePath.SelectedPath;
             Settings.Default.FullEventPath = Path.Combine(Settings.Default.Eventpath, Settings.Default.DateSetTemplate.Replace("{Eventname}", EventNameBox.Text));
+            if (Settings.Default.SetBackupPath)
+            {
+                Settings.Default.BackupPath = Path.Combine(Settings.Default.BackupBasePath, Settings.Default.DateSetTemplate.Replace("{Eventname}", EventNameBox.Text));
+                return;
+            }
+            Settings.Default.BackupPath = Settings.Default.FullEventPath;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -90,25 +97,60 @@ namespace WindowsFormsApp1
             TextBox ChangedBox = (TextBox) sender;
             Settings.Default.EventName = ChangedBox.Text;
             Settings.Default.FullEventPath = Path.Combine(Settings.Default.Eventpath, Settings.Default.DateSetTemplate.Replace("{Eventname}", ChangedBox.Text));
+            if (Settings.Default.SetBackupPath)
+            {
+                Settings.Default.BackupPath = Path.Combine(Settings.Default.BackupBasePath, Settings.Default.DateSetTemplate.Replace("{Eventname}", EventNameBox.Text));
+                return;
+            }
+            Settings.Default.BackupPath = Settings.Default.FullEventPath;
         }
 
         private void OkButton_Click(object sender, EventArgs e)
         {
             if (SelectNewEvent.Checked)
             {
+                if (!System.IO.Path.IsPathRooted(Settings.Default.FullEventPath))
+                {
+                    MessageBox.Show("Basispfad is kein valider Pfad. Bitte anpassen.", "Fehler: Ungültiger Basispfad", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (System.IO.Directory.Exists(Settings.Default.FullEventPath))
+                {
+                    MessageBox.Show("Event existiert bereits. Bitte anderes Event auswählen oder \"Bestehendes Event öffnen\" benutzen", "Fehler: Event existiert bereits", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 Settings.Default.ActiveEventPath = Settings.Default.FullEventPath;
-
-                try{ System.IO.Directory.CreateDirectory(Settings.Default.ActiveEventPath);} catch (ArgumentException ex) { }
+                System.IO.Directory.CreateDirectory(Settings.Default.ActiveEventPath);
             } 
+
             if (SelectExistingEvent.Checked)
             {
+                if (Settings.Default.ExistingEventName.Equals(""))
+                {
+                    MessageBox.Show("Name des bestehenden Events konnte nicht erkannt werden. Bitte ergänzen.", "Fehler: Eventname nicht erkannt", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!System.IO.Path.IsPathRooted(Settings.Default.ExistingEventPath))
+                {
+                    MessageBox.Show("Der Pfad zum bestehenden Event is kein valider Pfad. Bitte korrigieren.", "Fehler: Ungültiger Pfad", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!System.IO.Directory.Exists(Settings.Default.ExistingEventPath))
+                {
+                    MessageBox.Show("Der Ordner des bestehenden Event existiert nicht. Bitte einen existierenden Ordner auswählen oder \"Neues Event anlegen\" benutzen.", "Fehler: Eventname nicht erkannt", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 Settings.Default.ActiveEventPath = Settings.Default.ExistingEventPath;
-                try { System.IO.Directory.CreateDirectory(Settings.Default.ActiveEventPath); }catch(ArgumentException ex) { }
             }
             if (SelectNoEvent.Checked)
             {
                 Settings.Default.ActiveEventPath = "";
                 this.Close();
+            }
+
+            if (!Settings.Default.ChangeResultPath)
+            {
+                Settings.Default.ResultPath = Settings.Default.ActiveEventPath;
             }
 
             if (Settings.Default.SetLynxSettings)
@@ -139,16 +181,19 @@ namespace WindowsFormsApp1
                     var VersionSubkey = LynxKey.OpenSubKey(LynxVersion);
                     LynxPath = (string) VersionSubkey.GetValue("Install_Dir");
                 }
-                var LynxSplit = LynxPath.Split('\\');
-                string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    @"VirtualStore\Program Files", LynxSplit[LynxSplit.Count() - 1], @"Lynx.cfg");
-                try { System.IO.File.Copy(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"VirtualStore\Program Files", LynxSplit[LynxSplit.Count() - 1], @"Lynx.cfg"), Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"VirtualStore\Program Files", LynxSplit[LynxSplit.Count() - 1], @"Lynxbak.cfg"),true); }
-                catch (FileNotFoundException ex)
+                string ConfigPath = Path.Combine(LynxPath, "Lynx.cfg");
+                if (!System.IO.File.Exists(ConfigPath) || (System.IO.File.Exists(ConfigPath) && new System.IO.FileInfo(ConfigPath).Length < (long)1024))
                 {
-                    MessageBox.Show("Lynx-Konfiguration konnte nicht gefunden Werden. Datei "+ Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)+@"\VirtualStore\Program Files\" + LynxSplit[LynxSplit.Count() - 1] + @"\Lynx.cfg nicht gefunden", "Fehler: Lynx-Konfiguration nicht gefunden", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    var LynxSplit = LynxPath.Split('\\');
+                    ConfigPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"VirtualStore\Program Files", LynxSplit[LynxSplit.Count() - 1], @"Lynx.cfg");
+                    if (!System.IO.File.Exists(ConfigPath))
+                    {
+                        MessageBox.Show("Lynx-Konfiguration konnte nicht gefunden werden und wird nicht angepasst.", "Fehler: Lynx-Konfiguration nicht gefunden", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
-                var ReadConfig = File.ReadAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"VirtualStore\Program Files", LynxSplit[LynxSplit.Count() - 1], @"Lynx.cfg"));
+                System.IO.File.Copy(ConfigPath, ConfigPath.Replace("Lynx.cfg", "Lynxbak.cfg"), true);
+                var ReadConfig = File.ReadAllText(ConfigPath);
                 string[] ReplaceLines = new string[] 
                 {
                     @"(\\Competition\\Name:String,1=)(.*)",
@@ -170,7 +215,7 @@ namespace WindowsFormsApp1
                 {
                     ReadConfig = System.Text.RegularExpressions.Regex.Replace(ReadConfig, ReplaceLines[i], Replacements[i]);
                 }
-                File.WriteAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"VirtualStore\Program Files", LynxSplit[LynxSplit.Count() - 1], @"Lynx.cfg"), ReadConfig);
+                File.WriteAllText(ConfigPath, ReadConfig);
                 
             }
 
@@ -240,6 +285,12 @@ namespace WindowsFormsApp1
             TextBox ChangedObject = (TextBox) sender;
             Settings.Default.Eventpath = ChangedObject.Text;
             Settings.Default.FullEventPath = Path.Combine(Settings.Default.Eventpath, Settings.Default.DateSetTemplate.Replace("{Eventname}", EventNameBox.Text));
+            if (Settings.Default.SetBackupPath)
+            {
+                Settings.Default.BackupPath = Path.Combine(Settings.Default.BackupBasePath, Settings.Default.DateSetTemplate.Replace("{Eventname}", EventNameBox.Text));
+                return;
+            }
+            Settings.Default.BackupPath = Settings.Default.FullEventPath;
         }
 
         private void SelectedEventBox_TextChanged(object sender, EventArgs e)

@@ -49,7 +49,8 @@ namespace WindowsFormsApp1
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            ResultPathBox.Enabled = ChangeResultPathCheck.Checked;
+            CheckBox ChangedObject = (CheckBox)sender;
+            ResultPathBox.Enabled = ChangedObject.Checked;
         }
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
@@ -72,7 +73,7 @@ namespace WindowsFormsApp1
             Settings.Default.TempChangeResultPath = Settings.Default.ChangeResultPath;
             Settings.Default.TempSetLynxSettings = Settings.Default.SetLynxSettings;
             Settings.Default.TempSetBackupPath = Settings.Default.SetBackupPath;
-            Settings.Default.TempBackupPath = Settings.Default.BackupPath;
+            Settings.Default.TempBackupBasePath = Settings.Default.BackupBasePath;
             Settings.Default.TempStartLynx = Settings.Default.StartLynx;
             Settings.Default.TempIsValidnameTemplate = Settings.Default.IsValidNameTemplate;
             InvalidTemplateSign.Visible = !Settings.Default.TempIsValidnameTemplate;
@@ -132,7 +133,7 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            if (!System.IO.Path.IsPathRooted(Settings.Default.TempBackupPath) && Settings.Default.SetBackupPath)
+            if (!System.IO.Path.IsPathRooted(Settings.Default.TempBackupBasePath) && Settings.Default.SetBackupPath)
             {
                 MessageBox.Show("Backup-Basisordner ist kein valider Pfad. Bitte korrigieren", "Fehler: Invalide Backup-Basisordner", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -145,8 +146,8 @@ namespace WindowsFormsApp1
             }
             try { System.IO.Directory.CreateDirectory(Settings.Default.TempEventBasePath);} catch (ArgumentException ex) { }
             try { System.IO.Directory.CreateDirectory(Settings.Default.TempSeltecPath);}catch (ArgumentException ex) { }
-            try { System.IO.Directory.CreateDirectory(Settings.Default.TempSeltecPath);}catch (ArgumentException ex) { }
-            try { System.IO.Directory.CreateDirectory(Settings.Default.TempBackupPath);}catch (ArgumentException ex) { }
+            try { System.IO.Directory.CreateDirectory(Settings.Default.TempResultPath);}catch (ArgumentException ex) { }
+            try { System.IO.Directory.CreateDirectory(Settings.Default.TempBackupBasePath);}catch (ArgumentException ex) { }
 
             Settings.Default.EventBasePath = Settings.Default.TempEventBasePath;
             Settings.Default.EventPathTemplate = Settings.Default.TempEventPathTemplate;
@@ -157,13 +158,13 @@ namespace WindowsFormsApp1
             Settings.Default.ResultPath = Settings.Default.TempResultPath;
             Settings.Default.ChangeResultPath = Settings.Default.TempChangeResultPath;
             Settings.Default.SetBackupPath = Settings.Default.TempSetBackupPath;
-            Settings.Default.BackupPath = Settings.Default.TempBackupPath;
+            Settings.Default.BackupBasePath = Settings.Default.TempBackupBasePath;
             Settings.Default.SetLynxSettings = Settings.Default.TempSetLynxSettings;
             Settings.Default.StartLynx = Settings.Default.TempStartLynx;
 
             if (!Settings.Default.SetBackupPath)
             {
-                Settings.Default.BackupPath = Settings.Default.EventBasePath;
+                Settings.Default.BackupBasePath = Settings.Default.EventBasePath;
             }
 
             this.Close();
@@ -209,12 +210,22 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            Settings.Default.TempBackupPath = BrowsePath.SelectedPath;
+            Settings.Default.TempBackupBasePath = BrowsePath.SelectedPath;
         }
 
         private void templatePathExplanationButton_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("LynxWrapper_Namensvorlage.pdf");
+        }
+
+        private void ResultPathBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SetBackupCheck_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

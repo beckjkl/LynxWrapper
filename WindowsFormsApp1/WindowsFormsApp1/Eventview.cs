@@ -16,6 +16,10 @@ namespace WindowsFormsApp1
         private void LynxWrapper_Load(object sender, EventArgs e)
         {
             Properties.Settings.Default.ActiveEventPath = "";
+            EventWatcher.Created += EventWatcher_Changed;
+            EventWatcher.Deleted += EventWatcher_Changed;
+            Resultwatcher.Created += Resultwatcher_Changed;
+            Resultwatcher.Deleted += Resultwatcher_Changed;
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
@@ -30,8 +34,10 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Bitte zuerst die Einstellungen anpassen.", "Fehler: Einstellungen nicht gesetzt", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            var selector = new EventSelector();
-            selector.ShowDialog();
+            var Selector = new EventSelector();
+            Selector.ShowDialog();
+            EventWatcher.Path = Properties.Settings.Default.ActiveEventPath;
+            Resultwatcher.Path = Properties.Settings.Default.ResultPath;
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -41,7 +47,7 @@ namespace WindowsFormsApp1
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-
+//            MessageBox.Show("DEBUG: " + EventWatcher.Path + "; " + Resultwatcher.Path + "; " + Properties.Settings.Default.ActiveEventPath, "DEBUG", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void NewRaceMulti_CheckedChanged(object sender, EventArgs e)
@@ -49,62 +55,82 @@ namespace WindowsFormsApp1
 
         }
 
+        //Changes the state of an Item or create it if it doesn't exist
+        private ListViewItem ChangeItemState(string Name, int State, System.DateTime LastChangeTime)
+        {
+            string[] StateTexts = new string[] { "Geplant", "Neu (single User)", "Neu (Multi User)", "Nicht ausgewertet", "Ausgewertet" };
+            Color[] StateColors = new Color[] { Color.White, Color.Yellow, Color.FromArgb(192, 0, 192), Color.FromArgb(192, 0, 0), Color.Lime };
+
+            ListViewItem[] Candidates = RaceListView.Items.Find(Name, false);
+            ListViewItem FoundItem = null;
+            switch (Candidates.Length)
+            {
+                case 0:
+                    FoundItem = new ListViewItem();
+                    FoundItem.Name = Name;
+                    FoundItem.Text = Name.Split('(')[0];
+                    FoundItem.SubItems.Add("");
+                    FoundItem.SubItems.Add("");
+                    RaceListView.Items.Add(FoundItem);
+                    break;
+                case 1:
+                    FoundItem = Candidates[0];
+                    break;
+                default:
+                    MessageBox.Show("DEBUG: None-Unique ListviewItem: " + Name, "DEBUG", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return null;
+                    //Add logging?
+                    break;
+            }
+
+            if(State == 5)
+            {
+                FoundItem.Remove();
+            }     
+            FoundItem.Tag = State;
+            FoundItem.SubItems[1].Text = StateTexts[State];
+            FoundItem.SubItems[1].BackColor = StateColors[State];
+            FoundItem.SubItems[2].Text = LastChangeTime.ToShortDateString() + " " + LastChangeTime.ToShortTimeString();
+            return FoundItem;
+        }
+
         private void EventWatcher_Changed(object sender, System.IO.FileSystemEventArgs e)
         {
             FileSystemWatcher ChangedObject = (FileSystemWatcher) sender;
             string FileName = e.Name.Split('.')[0];
+            var LastChangeTime = System.IO.File.GetLastWriteTime(e.FullPath);
             switch (e.ChangeType)
             {
                 case WatcherChangeTypes.Created:
-                    if (System.Text.RegularExpressions.Regex.IsMatch(e.FullPath, @".*\.evt"))
+
+                    if (e.FullPath.EndsWith(".evt"))
                     {
-                        ListViewItem NewRace = new ListViewItem();
-                        NewRace.Text = FileName;
-                        NewRace.UseItemStyleForSubItems = false;
-                        NewRace.Name = FileName;
-                        NewRace.SubItems.Add("Neu (Single User)");
-                        NewRace.SubItems.Add(System.IO.File.GetLastWriteTime(e.FullPath).ToShortDateString() + " " + System.IO.File.GetLastWriteTime(e.FullPath).ToShortTimeString());
-                        NewRace.SubItems[1].BackColor = Color.Yellow;
-                        RaceListView.Items.Add(NewRace);
+                        ChangeItemState(FileName, 1, LastChangeTime);
                     }
 
-                    if (System.Text.RegularExpressions.Regex.IsMatch(e.FullPath, @".*\.i01"))
+                    if (e.FullPath.EndsWith(".i01"))
                     {
-                        ListViewItem ChangedRace_addi01 = RaceListView.Items.Find(FileName, false)[0];
-                        ChangedRace_addi01.SubItems[1].Text = "Nicht ausgewertet";
-                        ChangedRace_addi01.SubItems[1].BackColor = Color.FromArgb(192, 0, 0);
-                        ChangedRace_addi01.SubItems[2].Text = System.IO.File.GetLastWriteTime(e.FullPath).ToShortDateString() +
-                                                             " " + System.IO.File.GetLastWriteTime(e.FullPath)
-                                                                 .ToShortTimeString();
+                        ChangeItemState(FileName, 3, LastChangeTime);
                     }
 
                     break;
 
                 case WatcherChangeTypes.Deleted:
-                    if (System.Text.RegularExpressions.Regex.IsMatch(e.FullPath, @".*\.evt"))
+                    if (e.FullPath.EndsWith(".evt"))
                     {
-                        ListViewItem ChangedRace_rmevt = RaceListView.Items.Find(FileName, false)[0];
-                        ChangedRace_rmevt.Remove();
+                        ChangeItemState(FileName, 0, LastChangeTime);
                     }
 
-                    if (System.Text.RegularExpressions.Regex.IsMatch(e.FullPath, @".*\.i01"))
+                    if (e.FullPath.EndsWith(".i01"))
                     {
-                        ListViewItem ChangedRace_rmi01 = RaceListView.Items.Find(FileName, false)[0];
-                        ChangedRace_rmi01.SubItems[1].Text = "Neu (Single User)";
-                        ChangedRace_rmi01.SubItems[1].BackColor = Color.Yellow;
-                        ChangedRace_rmi01.SubItems[2].Text = System.IO.File.GetLastWriteTime(e.FullPath).ToShortDateString() +
-                                                       " " + System.IO.File.GetLastWriteTime(e.FullPath)
-                                                           .ToShortTimeString();
+                        ChangeItemState(FileName, 1, LastChangeTime);
                     }
                     break;
 
                 case WatcherChangeTypes.Changed:
-                    ListViewItem ChangedRace_ch = RaceListView.Items.Find(FileName, false)[0];
-                    ChangedRace_ch.SubItems[2].Text = System.IO.File.GetLastWriteTime(e.FullPath).ToShortDateString() +
-                                                   " " + System.IO.File.GetLastWriteTime(e.FullPath)
-                                                       .ToShortTimeString();
-
+                    ChangeItemState(FileName, 1, LastChangeTime);
                     break;
+                
                 default:
                     break;
             }
@@ -120,36 +146,60 @@ namespace WindowsFormsApp1
         {
             FileSystemWatcher ChangedObject = (FileSystemWatcher)sender;
             string FileName = e.Name.Split('.')[0];
+            var LastChangeTime = System.IO.File.GetLastWriteTime(e.FullPath);
+            int State = 5;
             switch (e.ChangeType)
             {
                 case WatcherChangeTypes.Created:
-                    ListViewItem ChangedRace_addlif = RaceListView.Items.Find(FileName, false)[0];
-                    ChangedRace_addlif.SubItems[1].Text = "Ausgewertet";
-                    ChangedRace_addlif.SubItems[1].BackColor = Color.Lime;
-                    ChangedRace_addlif.SubItems[2].Text = System.IO.File.GetLastWriteTime(e.FullPath).ToShortDateString() +
-                                                         " " + System.IO.File.GetLastWriteTime(e.FullPath)
-                                                             .ToShortTimeString();
+                    State = 4;
                     break;
 
                 case WatcherChangeTypes.Changed:
-                    ListViewItem ChangedRace_chlif = RaceListView.Items.Find(FileName, false)[0];
-                    ChangedRace_chlif.SubItems[2].Text = System.IO.File.GetLastWriteTime(e.FullPath).ToShortDateString() +
-                                                         " " + System.IO.File.GetLastWriteTime(e.FullPath)
-                                                             .ToShortTimeString();
+                    State = 4;
                     break;
+
                 case WatcherChangeTypes.Deleted:
-                    ListViewItem ChangedRace_rmlif = RaceListView.Items.Find(FileName, false)[0];
-                    ChangedRace_rmlif.SubItems[1].Text = "Nicht ausgewertet";
-                    ChangedRace_rmlif.SubItems[1].BackColor = Color.FromArgb(192, 0, 0);
-                    ChangedRace_rmlif.SubItems[2].Text = System.IO.File.GetLastWriteTime(e.FullPath).ToShortDateString() +
-                                                          " " + System.IO.File.GetLastWriteTime(e.FullPath)
-                                                              .ToShortTimeString();
+                    State = 3;
                     break;
 
                 default:
                     break;
             }
+            ListViewItem FoundItem = ChangeItemState(FileName, State, LastChangeTime);
+            if(FoundItem == null)
+            {
+                return;
+            }
+            if (State == 3)
+            {
+                FoundItem.ToolTipText = "";
+                return;
+            }
+            FoundItem.ToolTipText = ParseLif(Path.Combine(ChangedObject.Path, e.Name));
             //Parse Results
+        }
+
+        private string ParseLif(string File)
+        {
+            string ResultToolTip = "";
+            string[] ResultText = new string[] { "" };
+            try { ResultText = System.IO.File.ReadAllLines(File); } catch (IOException ex) {
+                return "";
+            }
+            foreach(string Line in ResultText)
+            {
+                if (! (Line[0] == ','))
+                {
+                    continue;
+                }
+                var SplitLine = Line.Split(',');
+                if(SplitLine.Length < 9)
+                {
+                    continue;
+                }
+                ResultToolTip += SplitLine[1] + "\t|" + SplitLine[2] + "\t|" + SplitLine[3] + "\t|" + SplitLine[4] + "\t|" + SplitLine[5] + "\t|" + SplitLine[8] + "\n";
+            }
+            return ResultToolTip;
         }
     }
 }

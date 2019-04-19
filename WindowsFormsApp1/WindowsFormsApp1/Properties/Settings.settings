@@ -39,10 +39,10 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="ChangeResultPath" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="TempChangeResultPath" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ResultPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -54,7 +54,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="TempSetLynxSettings" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="StartLynx" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -66,7 +66,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="TempIsValidnameTemplate" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ActiveEventPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -81,7 +81,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="InitialSettingsDone" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="SetBackupPath" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -89,13 +89,19 @@
     <Setting Name="TempSetBackupPath" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="BackupPath" Type="System.String" Scope="User">
+    <Setting Name="BackupBasePath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="TempBackupPath" Type="System.String" Scope="User">
+    <Setting Name="TempBackupBasePath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DateSetTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="BackupPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ExistingEventName" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

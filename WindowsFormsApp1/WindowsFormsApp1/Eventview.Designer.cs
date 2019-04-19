@@ -41,8 +41,8 @@
             this.RaceNotJudgedCheck = new System.Windows.Forms.CheckBox();
             this.RaceJudgedCheck = new System.Windows.Forms.CheckBox();
             this.TTEventview = new System.Windows.Forms.ToolTip(this.components);
-            this.EventWatcher = new System.IO.FileSystemWatcher();
             this.PlanedRaceCheck = new System.Windows.Forms.CheckBox();
+            this.EventWatcher = new System.IO.FileSystemWatcher();
             this.Resultwatcher = new System.IO.FileSystemWatcher();
             ((System.ComponentModel.ISupportInitialize)(this.EventWatcher)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Resultwatcher)).BeginInit();
@@ -51,16 +51,11 @@
             // RaceListView
             // 
             this.RaceListView.AllowColumnReorder = true;
-            resources.ApplyResources(this.RaceListView, "RaceListView");
             this.RaceListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Race,
             this.status,
             this.LastModified});
-            this.RaceListView.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("RaceListView.Groups"))),
-            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("RaceListView.Groups1"))),
-            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("RaceListView.Groups2"))),
-            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("RaceListView.Groups3")))});
+            resources.ApplyResources(this.RaceListView, "RaceListView");
             this.RaceListView.MultiSelect = false;
             this.RaceListView.Name = "RaceListView";
             this.RaceListView.ShowItemToolTips = true;
@@ -141,6 +136,13 @@
             this.RaceJudgedCheck.UseVisualStyleBackColor = false;
             this.RaceJudgedCheck.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
+            // PlanedRaceCheck
+            // 
+            resources.ApplyResources(this.PlanedRaceCheck, "PlanedRaceCheck");
+            this.PlanedRaceCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.PlanedRaceCheck.Name = "PlanedRaceCheck";
+            this.PlanedRaceCheck.UseVisualStyleBackColor = false;
+            // 
             // EventWatcher
             // 
             this.EventWatcher.EnableRaisingEvents = true;
@@ -148,13 +150,6 @@
             this.EventWatcher.Path = global::WindowsFormsApp1.Properties.Settings.Default.ActiveEventPath;
             this.EventWatcher.SynchronizingObject = this;
             this.EventWatcher.Changed += new System.IO.FileSystemEventHandler(this.EventWatcher_Changed);
-            // 
-            // PlanedRaceCheck
-            // 
-            resources.ApplyResources(this.PlanedRaceCheck, "PlanedRaceCheck");
-            this.PlanedRaceCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.PlanedRaceCheck.Name = "PlanedRaceCheck";
-            this.PlanedRaceCheck.UseVisualStyleBackColor = false;
             // 
             // Resultwatcher
             // 
