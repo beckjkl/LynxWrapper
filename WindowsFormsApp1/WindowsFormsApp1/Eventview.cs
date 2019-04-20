@@ -16,15 +16,14 @@ namespace WindowsFormsApp1
         private void LynxWrapper_Load(object sender, EventArgs e)
         {
             Properties.Settings.Default.ActiveEventPath = "";
-            EventWatcher.Created += EventWatcher_Changed;
-            EventWatcher.Deleted += EventWatcher_Changed;
+            EventWatcher.Created += EventWatcher_Created;
+            EventWatcher.Deleted += EventWatcher_Deleted;
             Resultwatcher.Created += Resultwatcher_Changed;
             Resultwatcher.Deleted += Resultwatcher_Changed;
-        }
-
-        private void checkBox4_CheckedChanged(object sender, EventArgs e)
-        {
-
+            PictueDataWatcher.Created += PictueDataWatcher_Created;
+            PictueDataWatcher.Deleted += PictueDataWatcher_Deleted;
+            Resultwatcher.Created += Resultwatcher_Created;
+            Resultwatcher.Deleted += Resultwatcher_Deleted;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -45,21 +44,16 @@ namespace WindowsFormsApp1
 
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-//            MessageBox.Show("DEBUG: " + EventWatcher.Path + "; " + Resultwatcher.Path + "; " + Properties.Settings.Default.ActiveEventPath, "DEBUG", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void NewRaceMulti_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         //Changes the state of an Item or create it if it doesn't exist
-        private ListViewItem ChangeItemState(string Name, int State, System.DateTime LastChangeTime)
+        private ListViewItem ChangeItemState(object sender, System.IO.FileSystemEventArgs e, int State)
         {
-            string[] StateTexts = new string[] { "Geplant", "Neu (single User)", "Neu (Multi User)", "Nicht ausgewertet", "Ausgewertet" };
+            FileSystemWatcher ChangedObject = (FileSystemWatcher)sender;
+            string FileName = e.Name.Split('.')[0];
+            var LastChangeTime = System.IO.File.GetLastWriteTime(e.FullPath);
+
+            string[] StateTexts = new string[] { "Geplant", "Neu (Single User)", "Neu (Multi User)", "Nicht ausgewertet", "Ausgewertet" };
             Color[] StateColors = new Color[] { Color.White, Color.Yellow, Color.FromArgb(192, 0, 192), Color.FromArgb(192, 0, 0), Color.Lime };
+            CheckBox[] StateEnablers = new CheckBox[] { PlanedRaceCheck, NewRaceSingleCheck, NewRaceMultiCheck, RaceNotJudgedCheck, RaceJudgedCheck };
 
             ListViewItem[] Candidates = RaceListView.Items.Find(Name, false);
             ListViewItem FoundItem = null;
@@ -82,7 +76,11 @@ namespace WindowsFormsApp1
                     //Add logging?
                     break;
             }
-
+            if(!(FoundItem.Tag == null))
+            {
+                State = Math.Max(State, (int)FoundItem.Tag);
+                //Replace with Analysis from State Graph later
+            }
             if(State == 5)
             {
                 FoundItem.Remove();
@@ -96,44 +94,32 @@ namespace WindowsFormsApp1
 
         private void EventWatcher_Changed(object sender, System.IO.FileSystemEventArgs e)
         {
-            FileSystemWatcher ChangedObject = (FileSystemWatcher) sender;
-            string FileName = e.Name.Split('.')[0];
-            var LastChangeTime = System.IO.File.GetLastWriteTime(e.FullPath);
-            switch (e.ChangeType)
-            {
-                case WatcherChangeTypes.Created:
+            ChangeItemState(sender,  e, 1);
+        }
 
-                    if (e.FullPath.EndsWith(".evt"))
-                    {
-                        ChangeItemState(FileName, 1, LastChangeTime);
-                    }
+        private void EventWatcher_Created(object sender, System.IO.FileSystemEventArgs e)
+        {
+            ChangeItemState(sender, e, 1);
+        }
 
-                    if (e.FullPath.EndsWith(".i01"))
-                    {
-                        ChangeItemState(FileName, 3, LastChangeTime);
-                    }
+        private void EventWatcher_Deleted(object sender, System.IO.FileSystemEventArgs e)
+        {
+            ChangeItemState(sender, e, 0);
+        }
 
-                    break;
+        private void PictueDataWatcher_Changed(object sender, System.IO.FileSystemEventArgs e)
+        {
+            ChangeItemState(sender, e, 3);
+        }
 
-                case WatcherChangeTypes.Deleted:
-                    if (e.FullPath.EndsWith(".evt"))
-                    {
-                        ChangeItemState(FileName, 0, LastChangeTime);
-                    }
+        private void PictueDataWatcher_Created(object sender, System.IO.FileSystemEventArgs e)
+        {
+            ChangeItemState(sender, e, 3);
+        }
 
-                    if (e.FullPath.EndsWith(".i01"))
-                    {
-                        ChangeItemState(FileName, 1, LastChangeTime);
-                    }
-                    break;
-
-                case WatcherChangeTypes.Changed:
-                    ChangeItemState(FileName, 1, LastChangeTime);
-                    break;
-                
-                default:
-                    break;
-            }
+        private void PictueDataWatcher_Deleted(object sender, System.IO.FileSystemEventArgs e)
+        {
+            ChangeItemState(sender, e, 1);
         }
 
         private void Options_Click(object sender, EventArgs e)
@@ -144,39 +130,23 @@ namespace WindowsFormsApp1
 
         private void Resultwatcher_Changed(object sender, FileSystemEventArgs e)
         {
-            FileSystemWatcher ChangedObject = (FileSystemWatcher)sender;
-            string FileName = e.Name.Split('.')[0];
-            var LastChangeTime = System.IO.File.GetLastWriteTime(e.FullPath);
-            int State = 5;
-            switch (e.ChangeType)
-            {
-                case WatcherChangeTypes.Created:
-                    State = 4;
-                    break;
+            ListViewItem FoundItem = ChangeItemState(sender, e, 4);
+            if (FoundItem == null) { return; }
+            FoundItem.ToolTipText = ParseLif(e.FullPath);
+        }
 
-                case WatcherChangeTypes.Changed:
-                    State = 4;
-                    break;
+        private void Resultwatcher_Created(object sender, FileSystemEventArgs e)
+        {
+            ListViewItem FoundItem = ChangeItemState(sender, e, 4);
+            if (FoundItem == null){ return; }
+            FoundItem.ToolTipText = ParseLif(e.FullPath);
+        }
 
-                case WatcherChangeTypes.Deleted:
-                    State = 3;
-                    break;
-
-                default:
-                    break;
-            }
-            ListViewItem FoundItem = ChangeItemState(FileName, State, LastChangeTime);
-            if(FoundItem == null)
-            {
-                return;
-            }
-            if (State == 3)
-            {
-                FoundItem.ToolTipText = "";
-                return;
-            }
-            FoundItem.ToolTipText = ParseLif(Path.Combine(ChangedObject.Path, e.Name));
-            //Parse Results
+        private void Resultwatcher_Deleted(object sender, FileSystemEventArgs e)
+        {
+            ListViewItem FoundItem = ChangeItemState(sender, e, 4);
+            if (FoundItem == null) { return; }
+            FoundItem.ToolTipText = "";
         }
 
         private string ParseLif(string File)
@@ -200,6 +170,43 @@ namespace WindowsFormsApp1
                 ResultToolTip += SplitLine[1] + "\t|" + SplitLine[2] + "\t|" + SplitLine[3] + "\t|" + SplitLine[4] + "\t|" + SplitLine[5] + "\t|" + SplitLine[8] + "\n";
             }
             return ResultToolTip;
+        }
+
+        private void HideEventByState(int State, bool Checked)
+        {
+            foreach(ListViewItem Item in RaceListView.Items)
+            {
+                if((int)Item.Tag == State)
+                {
+                    
+                }
+            }
+        }
+
+        private void PlanedRaceCheck_CheckedChanged(object sender, EventArgs e)
+        {           
+            HideEventByState(0, ((CheckBox)sender).Checked);
+        }
+
+        private void NewRaceSingle_CheckedChanged(object sender, EventArgs e)
+        {
+            //            MessageBox.Show("DEBUG: " + EventWatcher.Path + "; " + Resultwatcher.Path + "; " + Properties.Settings.Default.ActiveEventPath, "DEBUG", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            HideEventByState(1, ((CheckBox)sender).Checked);
+        }
+
+        private void NewRaceMulti_CheckedChanged(object sender, EventArgs e)
+        {
+            HideEventByState(2, ((CheckBox)sender).Checked);
+        }
+
+        private void RaceNotJudgedCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            HideEventByState(3, ((CheckBox)sender).Checked);
+        }
+
+        private void RaceJudged_CheckedChanged(object sender, EventArgs e)
+        {
+            HideEventByState(4, ((CheckBox)sender).Checked);
         }
     }
 }

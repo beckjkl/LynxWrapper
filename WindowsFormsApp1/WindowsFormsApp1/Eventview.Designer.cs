@@ -42,20 +42,24 @@
             this.RaceJudgedCheck = new System.Windows.Forms.CheckBox();
             this.TTEventview = new System.Windows.Forms.ToolTip(this.components);
             this.PlanedRaceCheck = new System.Windows.Forms.CheckBox();
+            this.PictueDataWatcher = new System.IO.FileSystemWatcher();
             this.EventWatcher = new System.IO.FileSystemWatcher();
             this.Resultwatcher = new System.IO.FileSystemWatcher();
+            this.SeltecWatcher = new System.IO.FileSystemWatcher();
+            ((System.ComponentModel.ISupportInitialize)(this.PictueDataWatcher)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventWatcher)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Resultwatcher)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SeltecWatcher)).BeginInit();
             this.SuspendLayout();
             // 
             // RaceListView
             // 
             this.RaceListView.AllowColumnReorder = true;
+            resources.ApplyResources(this.RaceListView, "RaceListView");
             this.RaceListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Race,
             this.status,
             this.LastModified});
-            resources.ApplyResources(this.RaceListView, "RaceListView");
             this.RaceListView.MultiSelect = false;
             this.RaceListView.Name = "RaceListView";
             this.RaceListView.ShowItemToolTips = true;
@@ -102,7 +106,7 @@
             this.NewRaceSingleCheck.Name = "NewRaceSingleCheck";
             this.TTEventview.SetToolTip(this.NewRaceSingleCheck, resources.GetString("NewRaceSingleCheck.ToolTip"));
             this.NewRaceSingleCheck.UseVisualStyleBackColor = false;
-            this.NewRaceSingleCheck.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.NewRaceSingleCheck.CheckedChanged += new System.EventHandler(this.NewRaceSingle_CheckedChanged);
             // 
             // NewRaceMultiCheck
             // 
@@ -124,6 +128,7 @@
             this.RaceNotJudgedCheck.Name = "RaceNotJudgedCheck";
             this.TTEventview.SetToolTip(this.RaceNotJudgedCheck, resources.GetString("RaceNotJudgedCheck.ToolTip"));
             this.RaceNotJudgedCheck.UseVisualStyleBackColor = false;
+            this.RaceNotJudgedCheck.CheckedChanged += new System.EventHandler(this.RaceNotJudgedCheck_CheckedChanged);
             // 
             // RaceJudgedCheck
             // 
@@ -134,7 +139,7 @@
             this.RaceJudgedCheck.Name = "RaceJudgedCheck";
             this.TTEventview.SetToolTip(this.RaceJudgedCheck, resources.GetString("RaceJudgedCheck.ToolTip"));
             this.RaceJudgedCheck.UseVisualStyleBackColor = false;
-            this.RaceJudgedCheck.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            this.RaceJudgedCheck.CheckedChanged += new System.EventHandler(this.RaceJudged_CheckedChanged);
             // 
             // PlanedRaceCheck
             // 
@@ -142,11 +147,20 @@
             this.PlanedRaceCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.PlanedRaceCheck.Name = "PlanedRaceCheck";
             this.PlanedRaceCheck.UseVisualStyleBackColor = false;
+            this.PlanedRaceCheck.CheckedChanged += new System.EventHandler(this.PlanedRaceCheck_CheckedChanged);
+            // 
+            // PictueDataWatcher
+            // 
+            this.PictueDataWatcher.EnableRaisingEvents = true;
+            this.PictueDataWatcher.Filter = "*.i0?";
+            this.PictueDataWatcher.Path = global::WindowsFormsApp1.Properties.Settings.Default.ActiveEventPath;
+            this.PictueDataWatcher.SynchronizingObject = this;
+            this.PictueDataWatcher.Changed += new System.IO.FileSystemEventHandler(this.PictueDataWatcher_Changed);
             // 
             // EventWatcher
             // 
             this.EventWatcher.EnableRaisingEvents = true;
-            this.EventWatcher.Filter = global::WindowsFormsApp1.Properties.Settings.Default.EventComponents;
+            this.EventWatcher.Filter = "*.evt";
             this.EventWatcher.Path = global::WindowsFormsApp1.Properties.Settings.Default.ActiveEventPath;
             this.EventWatcher.SynchronizingObject = this;
             this.EventWatcher.Changed += new System.IO.FileSystemEventHandler(this.EventWatcher_Changed);
@@ -158,6 +172,13 @@
             this.Resultwatcher.Path = global::WindowsFormsApp1.Properties.Settings.Default.ResultPath;
             this.Resultwatcher.SynchronizingObject = this;
             this.Resultwatcher.Changed += new System.IO.FileSystemEventHandler(this.Resultwatcher_Changed);
+            // 
+            // SeltecWatcher
+            // 
+            this.SeltecWatcher.EnableRaisingEvents = true;
+            this.SeltecWatcher.Filter = "*.evn";
+            this.SeltecWatcher.Path = global::WindowsFormsApp1.Properties.Settings.Default.SeltecPath;
+            this.SeltecWatcher.SynchronizingObject = this;
             // 
             // LynxWrapper
             // 
@@ -174,8 +195,10 @@
             this.Controls.Add(this.RaceListView);
             this.Name = "LynxWrapper";
             this.Load += new System.EventHandler(this.LynxWrapper_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.PictueDataWatcher)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventWatcher)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Resultwatcher)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SeltecWatcher)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,6 +219,8 @@
         private System.IO.FileSystemWatcher EventWatcher;
         private System.Windows.Forms.CheckBox PlanedRaceCheck;
         private System.IO.FileSystemWatcher Resultwatcher;
+        private System.IO.FileSystemWatcher PictueDataWatcher;
+        private System.IO.FileSystemWatcher SeltecWatcher;
     }
 }
 

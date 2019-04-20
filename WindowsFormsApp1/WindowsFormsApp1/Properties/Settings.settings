@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WindowsFormsApp1.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="EventComponents" Type="System.String" Scope="User">
-      <Value Profile="(Default)">*.evt, *.i01</Value>
-    </Setting>
     <Setting Name="Eventpath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
