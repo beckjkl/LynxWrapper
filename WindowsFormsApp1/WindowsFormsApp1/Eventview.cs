@@ -178,7 +178,7 @@ namespace WindowsFormsApp1
             {
                 if((int)Item.Tag == State)
                 {
-                    
+                    //Done once ListView is Replace with DataGridView and Hiding is available
                 }
             }
         }
